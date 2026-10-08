@@ -3,7 +3,7 @@
    ========================================================= */
 :root {
   --bg: #000;
-  --bg-elev: rgba(22, 22, 26, 0.62);
+  --bg-elev: rgba(16, 16, 20, 0.88);
   --text: #f5f5f7;
   --muted: #86868b;
   --line: rgba(255, 255, 255, 0.12);
@@ -139,7 +139,7 @@ main { position: relative; z-index: 2; }
 .btn:hover { transform: translateY(-2px) scale(1.02); }
 .btn-primary { background: var(--blue); color: #fff; }
 .btn-primary:hover { background: #47a6ff; }
-.btn-ghost { border: 1px solid var(--line); background: rgba(255,255,255,.04); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); }
+.btn-ghost { border: 1px solid var(--line); background: rgba(20,20,24,.85); }
 .btn-ghost:hover { border-color: rgba(255,255,255,.35); }
 .ico { width: 18px; height: 18px; fill: currentColor; }
 
@@ -193,7 +193,6 @@ main { position: relative; z-index: 2; }
 .num {
   padding: 28px 24px; border-radius: var(--radius);
   background: var(--bg-elev); border: 1px solid var(--line);
-  backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
 }
 .num-val {
   display: block; font-size: clamp(56px, 7vw, 96px); font-weight: 800; letter-spacing: -0.05em; line-height: 1;
@@ -225,7 +224,6 @@ main { position: relative; z-index: 2; }
   border-radius: var(--radius);
   background: linear-gradient(160deg, rgba(40,40,48,.75), rgba(14,14,18,.75));
   border: 1px solid var(--line);
-  backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px);
   display: flex; flex-direction: column;
 }
 .disc-card h3 { margin: 0 0 14px; font-size: clamp(26px, 3vw, 34px); letter-spacing: -0.03em; line-height: 1.1; }
@@ -250,7 +248,6 @@ main { position: relative; z-index: 2; }
   position: relative;
   padding: 28px 30px; border-radius: var(--radius);
   background: var(--bg-elev); border: 1px solid var(--line);
-  backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
 }
 .job-dot { position: absolute; left: -41px; top: 34px; width: 16px; height: 16px; border-radius: 50%; background: #000; border: 2px solid var(--blue); box-shadow: 0 0 0 6px rgba(41,151,255,.12); }
 .job-meta { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; margin-bottom: 8px; }
@@ -284,7 +281,6 @@ main { position: relative; z-index: 2; }
   border-radius: var(--radius);
   background: linear-gradient(160deg, rgba(36,36,44,.8), rgba(12,12,16,.8));
   border: 1px solid var(--line);
-  backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
   display: flex; flex-direction: column;
   transform-style: preserve-3d;
 }
@@ -329,7 +325,6 @@ main { position: relative; z-index: 2; }
   display: flex; align-items: center; gap: 20px;
   padding: 22px 24px; margin-bottom: 14px; border-radius: 22px;
   background: var(--bg-elev); border: 1px solid var(--line);
-  backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
 }
 .award h3 { margin: 0; font-size: 20px; letter-spacing: -0.02em; }
 .award p { margin: 2px 0 0; font-size: 15px; }
@@ -474,7 +469,6 @@ main { position: relative; z-index: 2; }
 .cluster-diagram {
   margin: 0; padding: clamp(18px, 3vw, 32px);
   border-radius: var(--radius); background: var(--bg-elev); border: 1px solid var(--line);
-  backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
   position: sticky; top: calc(var(--nav-h) + 40px);
 }
 .cluster-diagram svg { width: 100%; height: auto; overflow: visible; }
@@ -538,7 +532,7 @@ main { position: relative; z-index: 2; }
 /* ---------- Coursework ---------- */
 .coursework { margin-top: clamp(50px, 7vw, 90px); }
 .course-grid { list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; }
-.course { display: grid; gap: 6px; align-content: start; padding: 22px; border-radius: 20px; background: var(--bg-elev); border: 1px solid var(--line); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); }
+.course { display: grid; gap: 6px; align-content: start; padding: 22px; border-radius: 20px; background: var(--bg-elev); border: 1px solid var(--line); }
 .course strong { font-size: 17px; letter-spacing: -0.01em; line-height: 1.25; }
 .course .muted { font-size: 14px; }
 .course-code { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 12px; color: var(--blue); }
@@ -549,6 +543,7 @@ main { position: relative; z-index: 2; }
 }
 @media (max-width: 860px) {
   .about-grid, .thesis-grid { grid-template-columns: 1fr; }
+  .about-head, .cluster-diagram { position: static; }
 }
 @media (max-width: 760px) {
   .facts { grid-template-columns: 1fr; }
@@ -558,4 +553,21 @@ main { position: relative; z-index: 2; }
 }
 .job .job-tools .chips { display: flex; flex-wrap: wrap; gap: 6px; padding: 0; color: inherit; }
 @media (max-width: 760px) {
+}
+
+/* ---------- Phone readability ---------- */
+@media (max-width: 760px) {
+  /* Dark fade behind the featured copy so the 3D cluster above never sits under the text */
+  .featured-copy { position: relative; z-index: 0; }
+  .featured-copy::before {
+    content: ""; position: absolute; z-index: -1;
+    inset: -48px calc(var(--gutter) * -1) -24px;
+    background: linear-gradient(to bottom, rgba(0,0,0,0), rgba(0,0,0,.88) 28%, rgba(0,0,0,.92));
+  }
+  .featured-title { font-size: clamp(34px, 9.5vw, 44px); }
+  .fstep { font-size: 17px; }
+  .statement-text { font-size: clamp(26px, 7.4vw, 34px); }
+}
+@media (max-height: 700px) {
+  .scroll-hint { display: none; }
 }

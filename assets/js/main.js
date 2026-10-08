@@ -8,6 +8,12 @@ import * as THREE from "../vendor/three.module.min.js";
 const { gsap, ScrollTrigger, Lenis } = window;
 gsap.registerPlugin(ScrollTrigger);
 ScrollTrigger.config({ ignoreMobileResize: true });
+// force3D keeps animated elements on their own GPU layer after a tween ends.
+// With "auto", GSAP drops back to a 2D transform at the end, which re-rasterises
+// the text and makes it visibly snap into place.
+gsap.config({ force3D: true });
+// Apple-style deceleration: fast start, long gentle settle.
+const EASE_OUT = "power3.out";
 
 const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 const finePointer = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
@@ -20,7 +26,7 @@ document.getElementById("year").textContent = new Date().getFullYear();
    --------------------------------------------------------- */
 let lenis = null;
 if (!reduceMotion && Lenis) {
-  lenis = new Lenis({ duration: 1.15, easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)) });
+  lenis = new Lenis({ lerp: 0.09, smoothWheel: true, wheelMultiplier: 0.9 });
   lenis.on("scroll", ScrollTrigger.update);
   gsap.ticker.add((time) => lenis.raf(time * 1000));
   gsap.ticker.lagSmoothing(0);
@@ -83,16 +89,19 @@ try {
 }
 
 function createStage(canvas) {
-  const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: false, powerPreference: "high-performance" });
+  // Points are soft discs, so MSAA buys nothing visible and costs a lot of fill rate.
+  const renderer = new THREE.WebGLRenderer({ canvas, antialias: false, alpha: false, powerPreference: "high-performance", stencil: false });
   renderer.setClearColor(0x000000, 1);
-  const pr = Math.min(window.devicePixelRatio || 1, isMobile() ? 1.5 : 2);
+  const maxPR = Math.min(window.devicePixelRatio || 1, 1.5);
+  const minPR = 0.75;
+  let pr = maxPR;
   renderer.setPixelRatio(pr);
 
   const scene = new THREE.Scene();
   scene.fog = new THREE.FogExp2(0x000000, 0.035);
   const camera = new THREE.PerspectiveCamera(45, 1, 0.1, 100);
 
-  const COUNT = isMobile() ? 4500 : 9000;
+  const COUNT = isMobile() ? 3500 : 7000;
   const shapes = buildShapes(COUNT);
 
   // --- particles ---
@@ -186,7 +195,7 @@ function createStage(canvas) {
   scene.add(tilt);
 
   // --- ambient dust ---
-  const dustCount = isMobile() ? 400 : 900;
+  const dustCount = isMobile() ? 250 : 600;
   const dustPos = new Float32Array(dustCount * 3);
   for (let i = 0; i < dustCount; i++) {
     dustPos[i * 3] = (Math.random() - 0.5) * 40;
@@ -203,13 +212,13 @@ function createStage(canvas) {
     const m = isMobile();
     return [
       { x: 0, y: m ? 0.4 : 0, s: m ? 0.85 : 1, rx: 0, o: 1 },                 // 0 hero sphere
-      { x: 0, y: 0, s: m ? 0.7 : 0.95, rx: 0.3, o: 0.45 },                     // 1 torus knot (statement)
-      { x: 0, y: -1.8, s: 1, rx: 0, o: 0.75 },                                 // 2 wave (disciplines)
-      { x: m ? 0 : 4.2, y: 0, s: m ? 0.8 : 1, rx: 0.15, o: m ? 0.35 : 0.85 },  // 3 helix (experience)
-      { x: m ? 0 : 2.6, y: m ? 1.7 : -0.2, s: m ? 0.62 : 0.75, rx: 0.42, o: 1 },    // 4 Pi cluster (featured)
-      { x: 0, y: 0, s: m ? 0.75 : 1, rx: 1.05, o: 0.7 },                       // 5 galaxy (skills)
-      { x: 0, y: 0, s: m ? 0.75 : 1, rx: 0.5, o: 0.55 },                       // 6 ring (contact)
-      { x: m ? 0 : -3.6, y: m ? 1.2 : 0.2, s: m ? 0.7 : 0.8, rx: 0, o: m ? 0.3 : 0.75 }, // 7 sphere behind the heading (about)
+      { x: 0, y: 0, s: m ? 0.7 : 0.95, rx: 0.3, o: m ? 0.28 : 0.45 },           // 1 torus knot (statement)
+      { x: 0, y: -1.8, s: 1, rx: 0, o: m ? 0.5 : 0.75 },                        // 2 wave (disciplines)
+      { x: m ? 0 : 4.2, y: 0, s: m ? 0.8 : 1, rx: 0.15, o: m ? 0.22 : 0.85 },  // 3 helix (experience)
+      { x: m ? 0 : 2.6, y: m ? 2.5 : -0.2, s: m ? 0.5 : 0.75, rx: 0.42, o: m ? 0.8 : 1 }, // 4 Pi cluster (featured)
+      { x: 0, y: 0, s: m ? 0.75 : 1, rx: 1.05, o: m ? 0.45 : 0.7 },              // 5 galaxy (skills)
+      { x: 0, y: 0, s: m ? 0.75 : 1, rx: 0.5, o: m ? 0.4 : 0.55 },               // 6 ring (contact)
+      { x: m ? 0 : -3.6, y: m ? 1.2 : 0.2, s: m ? 0.7 : 0.8, rx: 0, o: m ? 0.22 : 0.75 }, // 7 sphere behind the heading (about)
       { x: m ? 0 : -3.4, y: 0, s: m ? 0.6 : 0.7, rx: 0.42, o: m ? 0.2 : 0.35 },       // 8 Pi cluster, dimmed (thesis deep dive)
     ];
   };
@@ -276,17 +285,35 @@ function createStage(canvas) {
   window.addEventListener("resize", resize);
   resize();
 
-  // --- loop ---
-  const scrollState = { spin: 0, zoom: 0, extraSpin: 0 };
-  const clock = new THREE.Clock();
-  let running = true;
-  document.addEventListener("visibilitychange", () => { running = !document.hidden; if (running) clock.getDelta(); });
+  // --- adaptive resolution: trade pixels for frame rate on slower devices ---
+  let frames = 0, frameTime = 0, fastWindows = 0;
+  function adapt(dtMs) {
+    frames++; frameTime += dtMs;
+    if (frames < 45) return;
+    const avg = frameTime / frames;
+    frames = 0; frameTime = 0;
+    if (avg > 19 && pr > minPR) {            // under ~52 fps: drop resolution
+      pr = Math.max(minPR, pr - 0.25);
+      fastWindows = 0;
+    } else if (avg < 13 && pr < maxPR) {     // comfortably above 75 fps for a while: raise it again
+      if (++fastWindows < 4) return;
+      pr = Math.min(maxPR, pr + 0.25);
+      fastWindows = 0;
+    } else {
+      return;
+    }
+    renderer.setPixelRatio(pr);
+    uniforms.uPR.value = pr;
+  }
 
-  function frame() {
-    requestAnimationFrame(frame);
-    if (!running) return;
-    const dt = Math.min(clock.getDelta(), 0.05);
-    const t = clock.elapsedTime;
+  // --- loop: rendered from gsap.ticker so Lenis, ScrollTrigger and WebGL share one frame ---
+  const scrollState = { spin: 0, zoom: 0, extraSpin: 0 };
+  let t = 0;
+
+  function frame(time, deltaMs) {
+    const dt = Math.min(deltaMs / 1000, 0.05);
+    t += dt;
+    adapt(deltaMs);
     uniforms.uTime.value = t;
 
     const auto = reduceMotion ? 0 : t * 0.08;
@@ -305,7 +332,7 @@ function createStage(canvas) {
 
     renderer.render(scene, camera);
   }
-  frame();
+  gsap.ticker.add(frame);
 
   // fade particles in on load
   gsap.to(uniforms.uOpacity, { value: layouts()[0].o, duration: 2, delay: 0.3, ease: "power2.out" });
@@ -472,7 +499,7 @@ document.querySelectorAll(".marquee-row").forEach((row) => { row.innerHTML += ro
 function intro() {
   document.getElementById("loader").classList.add("is-done");
   if (reduceMotion) return;
-  gsap.to(".hero-anim", { opacity: 1, y: 0, duration: 1.2, ease: "expo.out", stagger: 0.12, delay: 0.25 });
+  gsap.to(".hero-anim", { opacity: 1, y: 0, duration: 1.6, ease: EASE_OUT, stagger: 0.12, delay: 0.25 });
 }
 
 if (reduceMotion) {
@@ -481,16 +508,16 @@ if (reduceMotion) {
   document.querySelectorAll("[data-count]").forEach((el) => { el.textContent = el.dataset.count + (el.dataset.suffix || ""); });
 } else {
   // HERO — content drifts up & fades, camera pushes in
-  gsap.timeline({ scrollTrigger: { trigger: ".hero", start: "top top", end: "bottom top", scrub: true } })
+  gsap.timeline({ scrollTrigger: { trigger: ".hero", start: "top top", end: "bottom top", scrub: 0.8 } })
     .to(".hero-inner", { yPercent: -30, scale: 0.9, opacity: 0, ease: "none" }, 0)
     .to(".scroll-hint", { opacity: 0, ease: "none" }, 0);
   if (stage) {
-    gsap.to(stage.scrollState, { zoom: 2.2, ease: "none", scrollTrigger: { trigger: ".hero", start: "top top", end: "bottom top", scrub: true } });
+    gsap.to(stage.scrollState, { zoom: 2.2, ease: "none", scrollTrigger: { trigger: ".hero", start: "top top", end: "bottom top", scrub: 1 } });
   }
 
   // STATEMENT — pin + word-by-word light-up
   gsap.timeline({
-    scrollTrigger: { trigger: ".statement", start: "top top", end: "+=160%", pin: true, scrub: 0.6 },
+    scrollTrigger: { trigger: ".statement", start: "top top", end: "+=160%", pin: true, scrub: 1, anticipatePin: 1 },
   }).to(words, { opacity: 1, stagger: 0.12, ease: "none" })
     .to(".statement-text", { scale: 0.96, opacity: 0.0, duration: 1.2, ease: "power1.in" }, ">+0.6");
 
@@ -514,30 +541,30 @@ if (reduceMotion) {
     ease: "none",
     scrollTrigger: {
       trigger: ".disciplines", start: "top top", end: () => "+=" + (distance() + window.innerHeight * 0.3),
-      pin: true, scrub: 0.8, invalidateOnRefresh: true,
+      pin: true, scrub: 1, anticipatePin: 1, invalidateOnRefresh: true,
     },
   });
   gsap.from(".disc-card", {
-    rotateY: -18, z: -120, opacity: 0, transformPerspective: 1000, duration: 1.2, ease: "expo.out", stagger: 0.12,
+    rotateY: -12, z: -80, opacity: 0, transformPerspective: 1000, duration: 1.6, ease: EASE_OUT, stagger: 0.12,
     scrollTrigger: { trigger: ".disciplines", start: "top 70%" },
   });
 
   // EXPERIENCE — timeline draws as you scroll, jobs fold in
   gsap.to("#timelineFill", {
     scaleY: 1, ease: "none",
-    scrollTrigger: { trigger: ".timeline", start: "top 70%", end: "bottom 60%", scrub: true },
+    scrollTrigger: { trigger: ".timeline", start: "top 70%", end: "bottom 60%", scrub: 0.8 },
   });
   gsap.utils.toArray(".job").forEach((job) => {
     gsap.from(job, {
-      opacity: 0, y: 70, rotateX: -12, transformPerspective: 900, transformOrigin: "50% 0%",
-      duration: 1.1, ease: "expo.out",
+      opacity: 0, y: 48, rotateX: -8, transformPerspective: 900, transformOrigin: "50% 0%",
+      duration: 1.5, ease: EASE_OUT,
       scrollTrigger: { trigger: job, start: "top 85%" },
     });
   });
 
   // FEATURED — pinned story with the Pi cluster spinning on the stage
   const ftl = gsap.timeline({
-    scrollTrigger: { trigger: ".featured", start: "top top", end: "+=220%", pin: true, scrub: 0.8 },
+    scrollTrigger: { trigger: ".featured", start: "top top", end: "+=220%", pin: true, scrub: 1, anticipatePin: 1 },
   });
   ftl.from(".ft-line", { yPercent: 60, opacity: 0, stagger: 0.25, duration: 1, ease: "power3.out" });
   gsap.utils.toArray(".fstep").forEach((step, i, all) => {
@@ -551,8 +578,8 @@ if (reduceMotion) {
   ScrollTrigger.batch(".project", {
     start: "top 88%",
     onEnter: (els) => gsap.fromTo(els,
-      { opacity: 0, y: 90, rotateX: 14, transformPerspective: 1000 },
-      { opacity: 1, y: 0, rotateX: 0, duration: 1.2, ease: "expo.out", stagger: 0.1, overwrite: true }),
+      { opacity: 0, y: 56, rotateX: 8, transformPerspective: 1000 },
+      { opacity: 1, y: 0, rotateX: 0, duration: 1.5, ease: EASE_OUT, stagger: 0.1, overwrite: true }),
   });
   gsap.set(".project", { opacity: 0 });
 
@@ -561,19 +588,19 @@ if (reduceMotion) {
     const dir = Number(m.dataset.dir);
     gsap.fromTo(m.querySelector(".marquee-row"),
       { xPercent: dir > 0 ? 0 : -25 },
-      { xPercent: dir > 0 ? -25 : 0, ease: "none", scrollTrigger: { trigger: m, start: "top bottom", end: "bottom top", scrub: 0.5 } });
+      { xPercent: dir > 0 ? -25 : 0, ease: "none", scrollTrigger: { trigger: m, start: "top bottom", end: "bottom top", scrub: 1 } });
   });
 
   // CONTACT — headline slides up line by line
   gsap.from(".ct-line", {
     yPercent: 80, opacity: 0, stagger: 0.15, ease: "power3.out",
-    scrollTrigger: { trigger: ".contact", start: "top 75%", end: "top 25%", scrub: 0.8 },
+    scrollTrigger: { trigger: ".contact", start: "top 75%", end: "top 25%", scrub: 1 },
   });
 
   // Generic reveals
   ScrollTrigger.batch(".reveal", {
     start: "top 88%",
-    onEnter: (els) => gsap.to(els, { opacity: 1, y: 0, duration: 1.1, ease: "expo.out", stagger: 0.08, overwrite: true }),
+    onEnter: (els) => gsap.to(els, { opacity: 1, y: 0, duration: 1.4, ease: EASE_OUT, stagger: 0.08, overwrite: true }),
   });
 
   // Continuous spin tied to overall scroll
@@ -665,7 +692,7 @@ if (packet) {
    --------------------------------------------------------- */
 if (finePointer && !reduceMotion) {
   document.querySelectorAll(".tilt").forEach((card) => {
-    gsap.set(card, { transformPerspective: 900 });
+    gsap.set(card, { transformPerspective: 1000 });
     const rx = gsap.quickTo(card, "rotationX", { duration: 0.6, ease: "power3.out" });
     const ry = gsap.quickTo(card, "rotationY", { duration: 0.6, ease: "power3.out" });
     card.addEventListener("pointermove", (e) => {
