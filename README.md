@@ -18,6 +18,7 @@ A static, dependency-free site (no build step) with:
 ## Versions
 
 - `v1.0` branch: the first design, kept as a backup.
+- `v2.0` branch: v2 content with the first performance pass, kept as a backup.
 
 ## Run locally
 

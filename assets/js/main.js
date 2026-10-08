@@ -12,7 +12,7 @@ ScrollTrigger.config({ ignoreMobileResize: true });
 // With "auto", GSAP drops back to a 2D transform at the end, which re-rasterises
 // the text and makes it visibly snap into place.
 gsap.config({ force3D: true });
-// Apple-style deceleration: fast start, long gentle settle.
+// Apple-style deceleration for time-based tweens (page load, hover).
 const EASE_OUT = "power3.out";
 
 const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
@@ -285,18 +285,33 @@ function createStage(canvas) {
   window.addEventListener("resize", resize);
   resize();
 
-  // --- adaptive resolution: trade pixels for frame rate on slower devices ---
+  // --- adaptive resolution that targets the display's own refresh rate ---
+  // The browser runs requestAnimationFrame at the screen's rate (60, 90, 120, 144 Hz…).
+  // We measure that rate, then lower the canvas resolution whenever frames take longer
+  // than one refresh, so a 120 Hz screen gets a full 120 fps instead of 60.
+  let refreshMs = 1000 / 60;
+  const samples = [];
   let frames = 0, frameTime = 0, fastWindows = 0;
   function adapt(dtMs) {
+    if (dtMs <= 0 || dtMs > 100) return;
+    if (samples.length < 90) {
+      samples.push(dtMs);
+      if (samples.length === 90) {
+        const sorted = samples.slice().sort((a, b) => a - b);
+        // fastest steady interval = the display refresh interval
+        refreshMs = Math.max(1000 / 240, sorted[Math.floor(sorted.length * 0.2)]);
+      }
+      return;
+    }
     frames++; frameTime += dtMs;
-    if (frames < 45) return;
+    if (frames < 60) return;
     const avg = frameTime / frames;
     frames = 0; frameTime = 0;
-    if (avg > 19 && pr > minPR) {            // under ~52 fps: drop resolution
+    if (avg > refreshMs * 1.2 && pr > minPR) {        // missing refreshes: drop resolution
       pr = Math.max(minPR, pr - 0.25);
       fastWindows = 0;
-    } else if (avg < 13 && pr < maxPR) {     // comfortably above 75 fps for a while: raise it again
-      if (++fastWindows < 4) return;
+    } else if (avg < refreshMs * 1.05 && pr < maxPR) { // hitting every refresh for a while: try higher
+      if (++fastWindows < 5) return;
       pr = Math.min(maxPR, pr + 0.25);
       fastWindows = 0;
     } else {
@@ -521,14 +536,14 @@ if (reduceMotion) {
   }).to(words, { opacity: 1, stagger: 0.12, ease: "none" })
     .to(".statement-text", { scale: 0.96, opacity: 0.0, duration: 1.2, ease: "power1.in" }, ">+0.6");
 
-  // NUMBERS — count up
+  // NUMBERS — count up as you scroll in, back down as you scroll out
   document.querySelectorAll("[data-count]").forEach((el) => {
     const end = Number(el.dataset.count);
     const suffix = el.dataset.suffix || "";
     const obj = { v: 0 };
     gsap.to(obj, {
-      v: end, duration: 1.8, ease: "power3.out",
-      scrollTrigger: { trigger: el, start: "top 85%", once: true },
+      v: end, ease: "power2.out",
+      scrollTrigger: { trigger: el, start: "clamp(top 95%)", end: "clamp(top 55%)", scrub: 0.6 },
       onUpdate: () => { el.textContent = Math.round(obj.v) + suffix; },
     });
   });
@@ -544,10 +559,10 @@ if (reduceMotion) {
       pin: true, scrub: 1, anticipatePin: 1, invalidateOnRefresh: true,
     },
   });
-  gsap.from(".disc-card", {
-    rotateY: -12, z: -80, opacity: 0, transformPerspective: 1000, duration: 1.6, ease: EASE_OUT, stagger: 0.12,
-    scrollTrigger: { trigger: ".disciplines", start: "top 70%" },
-  });
+  gsap.fromTo(".disc-card",
+    { y: 80, z: -80, opacity: 0, transformPerspective: 1000 },
+    { y: 0, z: 0, opacity: 1, ease: "power2.out", stagger: 0.08,
+      scrollTrigger: { trigger: ".disciplines", start: "top 95%", end: "top 15%", scrub: 0.8 } });
 
   // EXPERIENCE — timeline draws as you scroll, jobs fold in
   gsap.to("#timelineFill", {
@@ -555,11 +570,10 @@ if (reduceMotion) {
     scrollTrigger: { trigger: ".timeline", start: "top 70%", end: "bottom 60%", scrub: 0.8 },
   });
   gsap.utils.toArray(".job").forEach((job) => {
-    gsap.from(job, {
-      opacity: 0, y: 48, rotateX: -8, transformPerspective: 900, transformOrigin: "50% 0%",
-      duration: 1.5, ease: EASE_OUT,
-      scrollTrigger: { trigger: job, start: "top 85%" },
-    });
+    gsap.fromTo(job,
+      { opacity: 0, y: 60, rotateX: -10, transformPerspective: 900, transformOrigin: "50% 0%" },
+      { opacity: 1, y: 0, rotateX: 0, ease: "power2.out",
+        scrollTrigger: { trigger: job, start: "clamp(top 98%)", end: "clamp(top 62%)", scrub: 0.8 } });
   });
 
   // FEATURED — pinned story with the Pi cluster spinning on the stage
@@ -574,14 +588,14 @@ if (reduceMotion) {
   ftl.to({}, { duration: 0.6 });
   if (stage) ftl.to(stage.scrollState, { extraSpin: Math.PI * 1.25, duration: ftl.duration(), ease: "none" }, 0);
 
-  // PROJECTS — cards rise in with depth
-  ScrollTrigger.batch(".project", {
-    start: "top 88%",
-    onEnter: (els) => gsap.fromTo(els,
-      { opacity: 0, y: 56, rotateX: 8, transformPerspective: 1000 },
-      { opacity: 1, y: 0, rotateX: 0, duration: 1.5, ease: EASE_OUT, stagger: 0.1, overwrite: true }),
+  // PROJECTS — cards rise in with depth, and sink back as you scroll up.
+  // Only y / z / opacity are scrubbed, so the hover tilt (rotation) never fights it.
+  gsap.utils.toArray(".project").forEach((card, i) => {
+    gsap.fromTo(card,
+      { opacity: 0, y: 90, z: -60, transformPerspective: 1000 },
+      { opacity: 1, y: 0, z: 0, ease: "power2.out",
+        scrollTrigger: { trigger: card, start: `clamp(top ${100 - (i % 3) * 3}%)`, end: "clamp(top 66%)", scrub: 0.8 } });
   });
-  gsap.set(".project", { opacity: 0 });
 
   // SKILLS — marquees driven by scroll
   document.querySelectorAll(".marquee").forEach((m) => {
@@ -597,10 +611,12 @@ if (reduceMotion) {
     scrollTrigger: { trigger: ".contact", start: "top 75%", end: "top 25%", scrub: 1 },
   });
 
-  // Generic reveals
-  ScrollTrigger.batch(".reveal", {
-    start: "top 88%",
-    onEnter: (els) => gsap.to(els, { opacity: 1, y: 0, duration: 1.4, ease: EASE_OUT, stagger: 0.08, overwrite: true }),
+  // Generic reveals — tied to scroll position, so they play backwards when you scroll up
+  gsap.utils.toArray(".reveal").forEach((el) => {
+    gsap.fromTo(el,
+      { opacity: 0, y: 48 },
+      { opacity: 1, y: 0, ease: "power2.out",
+        scrollTrigger: { trigger: el, start: "clamp(top 97%)", end: "clamp(top 72%)", scrub: 0.6 } });
   });
 
   // Continuous spin tied to overall scroll
