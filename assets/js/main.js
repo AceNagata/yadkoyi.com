@@ -209,6 +209,8 @@ function createStage(canvas) {
       { x: m ? 0 : 2.6, y: m ? 1.7 : -0.2, s: m ? 0.62 : 0.75, rx: 0.42, o: 1 },    // 4 Pi cluster (featured)
       { x: 0, y: 0, s: m ? 0.75 : 1, rx: 1.05, o: 0.7 },                       // 5 galaxy (skills)
       { x: 0, y: 0, s: m ? 0.75 : 1, rx: 0.5, o: 0.55 },                       // 6 ring (contact)
+      { x: m ? 0 : -3.6, y: m ? 1.2 : 0.2, s: m ? 0.7 : 0.8, rx: 0, o: m ? 0.3 : 0.75 }, // 7 sphere behind portrait (about)
+      { x: m ? 0 : -3.4, y: 0, s: m ? 0.6 : 0.7, rx: 0.42, o: m ? 0.2 : 0.35 },       // 8 Pi cluster, dimmed (thesis deep dive)
     ];
   };
 
@@ -250,7 +252,7 @@ function createStage(canvas) {
     const d = reduceMotion ? 0.01 : 1.9;
     morph.tween = gsap.to(uniforms.uMix, { value: 1, duration: d, ease: "power2.inOut" });
     applyLayout(index, reduceMotion ? 0.01 : 1.6);
-    gsap.to([coreMat, core2Mat], { opacity: index === 0 ? 0.32 : 0, duration: 0.8, overwrite: true });
+    gsap.to([coreMat, core2Mat], { opacity: index === 0 || index === 7 ? 0.32 : 0, duration: 0.8, overwrite: true });
   }
 
   // --- pointer parallax ---
@@ -446,7 +448,8 @@ function buildShapes(n) {
     return [Math.cos(a) * rad, gauss() * 0.08, Math.sin(a) * rad];
   });
 
-  return [sphere, knot, wave, helix, cluster, galaxy, ring];
+  // 7 and 8 reuse earlier shapes with their own layout
+  return [sphere, knot, wave, helix, cluster, galaxy, ring, sphere, cluster];
 }
 
 /* ---------------------------------------------------------
@@ -591,6 +594,82 @@ if (stage) {
       onEnterBack: () => stage.setShape(shape),
     });
   });
+}
+
+/* ---------------------------------------------------------
+   Profile photo (optional): set data-photo on .portrait
+   --------------------------------------------------------- */
+document.querySelectorAll(".portrait[data-photo]").forEach((el) => {
+  const src = el.dataset.photo;
+  if (!src) return;
+  const img = new Image();
+  img.alt = "Portrait of Yad Soran Tawfeeq";
+  img.onload = () => { el.prepend(img); el.classList.add("has-photo"); };
+  img.src = src;
+});
+
+/* ---------------------------------------------------------
+   Project case studies
+   --------------------------------------------------------- */
+const caseDialog = document.getElementById("caseDialog");
+if (caseDialog && typeof caseDialog.showModal === "function") {
+  const caseTitle = document.getElementById("caseTitle");
+  const caseKind = document.getElementById("caseKind");
+  const caseBody = document.getElementById("caseBody");
+  let lastTrigger = null;
+
+  const openCase = (card, trigger) => {
+    caseTitle.textContent = card.dataset.caseTitle;
+    caseKind.textContent = card.dataset.caseKind;
+    caseBody.innerHTML = card.querySelector(".case").innerHTML;
+    lastTrigger = trigger;
+    lenis?.stop();
+    caseDialog.showModal();
+    caseDialog.querySelector(".case-dialog-inner").scrollTop = 0;
+  };
+  const closeCase = () => caseDialog.close();
+
+  caseDialog.addEventListener("close", () => {
+    lenis?.start();
+    lastTrigger?.focus({ preventScroll: true });
+  });
+  caseDialog.addEventListener("click", (e) => { if (e.target === caseDialog) closeCase(); });
+  caseDialog.querySelector(".case-close").addEventListener("click", closeCase);
+
+  document.querySelectorAll(".project").forEach((card) => {
+    const btn = card.querySelector(".case-btn");
+    card.addEventListener("click", (e) => {
+      if (e.target.closest("a")) return;
+      openCase(card, btn);
+    });
+  });
+} else {
+  // No <dialog> support: show case studies inline
+  document.querySelectorAll(".project .case").forEach((c) => { c.hidden = false; });
+  document.querySelectorAll(".case-btn").forEach((b) => b.remove());
+}
+
+/* ---------------------------------------------------------
+   Cluster diagram: a packet travelling head → switch → workers
+   --------------------------------------------------------- */
+const packet = document.querySelector(".d-packet");
+if (packet) {
+  if (reduceMotion) {
+    packet.remove();
+  } else {
+    const routes = [
+      [[220, 92], [220, 206], [80, 206], [80, 236]],
+      [[220, 92], [220, 236]],
+      [[220, 92], [220, 206], [360, 206], [360, 236]],
+    ];
+    const tl = gsap.timeline({ repeat: -1, paused: true });
+    routes.forEach((r) => {
+      tl.set(packet, { attr: { cx: r[0][0], cy: r[0][1] }, opacity: 1 });
+      for (let i = 1; i < r.length; i++) tl.to(packet, { attr: { cx: r[i][0], cy: r[i][1] }, duration: 0.45, ease: "none" });
+      tl.to(packet, { opacity: 0, duration: 0.2 });
+    });
+    ScrollTrigger.create({ trigger: ".cluster-diagram", start: "top bottom", end: "bottom top", onToggle: (self) => (self.isActive ? tl.play() : tl.pause()) });
+  }
 }
 
 /* ---------------------------------------------------------

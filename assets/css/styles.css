@@ -429,3 +429,145 @@ main { position: relative; z-index: 2; }
   .js .reveal, .js .hero-anim { opacity: 1; transform: none; }
   .statement-text .w { opacity: 1; }
 }
+
+/* =========================================================
+   v2 — About, thesis deep dive, case studies, coursework
+   ========================================================= */
+.section-lead { margin: calc(clamp(36px, 6vw, 72px) * -0.6) 0 clamp(28px, 4vw, 44px); font-size: 17px; }
+.inline-link { color: var(--blue); }
+.inline-link:hover { text-decoration: underline; }
+:focus-visible { outline: 2px solid var(--blue); outline-offset: 3px; border-radius: 6px; }
+
+/* ---------- About ---------- */
+.about { padding: clamp(90px, 12vw, 170px) 0 clamp(40px, 6vw, 80px); }
+.about-grid { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: clamp(36px, 6vw, 90px); align-items: start; }
+.portrait-wrap { position: sticky; top: calc(var(--nav-h) + 40px); }
+.portrait {
+  position: relative; overflow: hidden;
+  aspect-ratio: 4 / 5; max-width: 100%;
+  border-radius: 32px;
+  background:
+    radial-gradient(circle at 30% 20%, rgba(41,151,255,.35), transparent 55%),
+    radial-gradient(circle at 80% 85%, rgba(191,90,242,.35), transparent 55%),
+    linear-gradient(160deg, #15151b, #050507);
+  border: 1px solid var(--line);
+  display: grid; place-items: center;
+  box-shadow: 0 30px 80px rgba(0,0,0,.5);
+}
+.portrait::after { content: ""; position: absolute; inset: 0; background: repeating-linear-gradient(0deg, rgba(255,255,255,.025) 0 1px, transparent 1px 4px); pointer-events: none; }
+.portrait img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.portrait-mono { font-size: clamp(90px, 14vw, 180px); font-weight: 800; letter-spacing: -0.06em; background: var(--grad); -webkit-background-clip: text; background-clip: text; color: transparent; }
+.portrait-tag { position: absolute; left: 20px; bottom: 18px; z-index: 1; font-size: 12px; letter-spacing: .14em; text-transform: uppercase; color: rgba(245,245,247,.75); padding: 6px 12px; border-radius: 999px; background: rgba(0,0,0,.45); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); }
+.portrait.has-photo .portrait-mono { display: none; }
+.about-copy .section-title { margin-bottom: 32px; }
+.about-text { display: grid; gap: 18px; max-width: 62ch; }
+.about-text p { margin: 0; font-size: clamp(17px, 1.6vw, 19px); color: rgba(245,245,247,.8); }
+.about-text strong { color: var(--text); }
+.facts { margin: 36px 0 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 28px; }
+.facts div { padding: 16px 0; border-top: 1px solid var(--line); min-width: 0; }
+.facts dt { font-size: 12px; letter-spacing: .14em; text-transform: uppercase; color: var(--muted); margin-bottom: 4px; }
+.facts dd { margin: 0; font-weight: 500; }
+.about-actions { margin-top: 32px; display: flex; gap: 12px; flex-wrap: wrap; }
+
+/* ---------- Experience tools ---------- */
+.job-tools { margin-top: 18px; padding-top: 16px; border-top: 1px solid rgba(255,255,255,.07); display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
+.job-tools-label { font-size: 12px; letter-spacing: .14em; text-transform: uppercase; color: var(--muted); }
+.job-tools .chips li { font-size: 12px; padding: 4px 10px; }
+
+/* ---------- Thesis deep dive ---------- */
+.thesis { padding: clamp(80px, 12vw, 160px) 0 clamp(40px, 6vw, 80px); }
+.thesis-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: clamp(32px, 5vw, 72px); align-items: start; }
+.cluster-diagram {
+  margin: 0; padding: clamp(18px, 3vw, 32px);
+  border-radius: var(--radius); background: var(--bg-elev); border: 1px solid var(--line);
+  backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
+  position: sticky; top: calc(var(--nav-h) + 40px);
+}
+.cluster-diagram svg { width: 100%; height: auto; overflow: visible; }
+.cluster-diagram figcaption { margin-top: 14px; font-size: 14px; }
+.d-links path { fill: none; stroke: rgba(245,245,247,.25); stroke-width: 2; stroke-dasharray: 5 6; animation: dash 1.6s linear infinite; }
+@keyframes dash { to { stroke-dashoffset: -22; } }
+.d-node rect { fill: rgba(255,255,255,.04); stroke: rgba(245,245,247,.25); stroke-width: 1.5; }
+.d-head rect { fill: rgba(41,151,255,.12); stroke: url(#dg); stroke-width: 2; }
+.d-switch rect { fill: rgba(191,90,242,.1); stroke: rgba(191,90,242,.6); }
+.d-title { fill: var(--text); font-size: 15px; font-weight: 700; text-anchor: middle; font-family: inherit; }
+.d-sub { fill: var(--muted); font-size: 11.5px; text-anchor: middle; font-family: inherit; }
+.d-packet { fill: #fff; filter: drop-shadow(0 0 6px var(--blue)); }
+.spec { margin: 0 0 36px; display: grid; }
+.spec div { display: grid; grid-template-columns: 130px minmax(0, 1fr); gap: 16px; padding: 14px 0; border-top: 1px solid var(--line); }
+.spec div:last-child { border-bottom: 1px solid var(--line); }
+.spec dt { font-size: 12px; letter-spacing: .14em; text-transform: uppercase; color: var(--muted); padding-top: 3px; }
+.spec dd { margin: 0; font-weight: 500; }
+.spec-num { font-size: 32px; font-weight: 800; line-height: 1; background: var(--grad); -webkit-background-clip: text; background-clip: text; color: transparent; font-variant-numeric: tabular-nums; }
+.steps { list-style: none; padding: 0; margin: 0 0 28px; display: grid; gap: 14px; }
+.steps li { display: flex; gap: 16px; align-items: flex-start; padding: 18px 20px; border-radius: 20px; background: var(--bg-elev); border: 1px solid var(--line); }
+.steps li > div { min-width: 0; }
+.step-n { flex: 0 0 auto; width: 32px; height: 32px; border-radius: 50%; display: grid; place-items: center; font-weight: 700; font-size: 14px; color: #fff; background: var(--grad); }
+.steps h3 { margin: 2px 0 4px; font-size: 18px; letter-spacing: -0.01em; }
+.steps p { margin: 0; color: rgba(245,245,247,.72); font-size: 15px; }
+.thesis-note { margin: 0; color: rgba(245,245,247,.75); max-width: 62ch; }
+
+/* ---------- Project case studies ---------- */
+.project { cursor: pointer; }
+.project-grid { grid-auto-flow: dense; }
+.case-btn {
+  margin-top: 18px; align-self: flex-start;
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 0; border: 0; background: none; cursor: pointer;
+  font: inherit; font-size: 14px; font-weight: 600; color: var(--text);
+}
+.case-btn span { transition: transform .3s var(--ease); }
+.project:hover .case-btn span { transform: translateX(4px); }
+.case-dialog {
+  width: min(720px, calc(100vw - 32px)); max-height: min(86vh, 900px);
+  padding: 0; border: 1px solid var(--line); border-radius: 28px;
+  background: #0d0d11; color: var(--text);
+  box-shadow: 0 40px 120px rgba(0,0,0,.7);
+}
+.case-dialog::backdrop { background: rgba(0,0,0,.6); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); }
+.case-dialog[open] { animation: dialogIn .5s var(--ease); }
+@keyframes dialogIn { from { opacity: 0; transform: translateY(30px) scale(.97); } }
+.case-dialog-inner { position: relative; padding: clamp(28px, 5vw, 48px); overflow-y: auto; max-height: min(86vh, 900px); overscroll-behavior: contain; }
+.case-dialog h2 { margin: 0 0 22px; font-size: clamp(30px, 5vw, 46px); letter-spacing: -0.035em; line-height: 1.05; padding-right: 40px; }
+.case-dialog h4 { margin: 26px 0 8px; font-size: 12px; letter-spacing: .14em; text-transform: uppercase; color: var(--muted); }
+.case-dialog p { margin: 0; color: rgba(245,245,247,.82); }
+.case-list { margin: 0; padding-left: 18px; display: grid; gap: 8px; color: rgba(245,245,247,.82); }
+.case-link { margin-top: 28px !important; }
+.case-close {
+  position: absolute; top: 18px; right: 18px;
+  width: 40px; height: 40px; border-radius: 50%;
+  border: 1px solid var(--line); background: rgba(255,255,255,.06); color: var(--text);
+  font-size: 24px; line-height: 1; cursor: pointer;
+}
+.case-close:hover { background: rgba(255,255,255,.12); }
+
+/* ---------- Coursework ---------- */
+.coursework { margin-top: clamp(50px, 7vw, 90px); }
+.course-grid { list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; }
+.course { display: grid; gap: 6px; align-content: start; padding: 22px; border-radius: 20px; background: var(--bg-elev); border: 1px solid var(--line); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); }
+.course strong { font-size: 17px; letter-spacing: -0.01em; line-height: 1.25; }
+.course .muted { font-size: 14px; }
+.course-code { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 12px; color: var(--blue); }
+
+@media (max-width: 1024px) {
+  .project--wide { grid-column: auto; }
+  .course-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 860px) {
+  .about-grid, .thesis-grid { grid-template-columns: 1fr; }
+  .portrait-wrap, .cluster-diagram { position: static; }
+  .portrait-wrap { max-width: 360px; }
+}
+@media (max-width: 760px) {
+  .facts { grid-template-columns: 1fr; }
+  .spec div { grid-template-columns: 1fr; gap: 4px; }
+  .course-grid { grid-template-columns: 1fr; }
+  .job-tools { gap: 8px; }
+}
+.job .job-tools .chips { display: flex; flex-wrap: wrap; gap: 6px; padding: 0; color: inherit; }
+@media (max-width: 760px) {
+  .portrait-wrap { max-width: 220px; }
+  .portrait { aspect-ratio: 1; border-radius: 28px; }
+  .portrait-mono { font-size: 84px; }
+  .portrait-tag { left: 12px; bottom: 12px; font-size: 10px; }
+}

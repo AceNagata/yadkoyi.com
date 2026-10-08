@@ -5,9 +5,20 @@ Personal site of **Yad Soran Tawfeeq**, a software and network & infrastructure 
 A static, dependency-free site (no build step) with:
 
 - A full-screen **Three.js** particle stage. It morphs between 3D shapes as you scroll: sphere → torus knot → network mesh → double helix → stacked Raspberry Pi cluster → galaxy → orbit ring.
+- About section, project case-study pop-ups, a thesis deep dive with a cluster diagram, per-job tools, coursework, and a CV download.
 - Apple-style **GSAP ScrollTrigger** choreography: pinned word-by-word statement, horizontal pinned card scroll, a timeline that draws itself, a pinned featured-project story, scroll-driven marquees and counters.
 - **Lenis** smooth scrolling, 3D hover tilt on cards, and full mobile responsiveness.
 - Respects `prefers-reduced-motion`, and falls back to a static background if WebGL is unavailable.
+
+## Updating content
+
+- **Profile photo:** put a photo at `assets/img/profile.jpg`, then in `index.html` set `data-photo="assets/img/profile.jpg"` on the `.portrait` element. Until then a monogram is shown.
+- **CV:** replace `assets/docs/Yad_Soran_Tawfeeq_CV.pdf` (keep the file name, or update the links).
+- **Project case studies:** each project card in `index.html` has a hidden `.case` block that the pop-up displays.
+
+## Versions
+
+- `v1.0` branch: the first design, kept as a backup.
 
 ## Run locally
 
