@@ -209,7 +209,7 @@ function createStage(canvas) {
       { x: m ? 0 : 2.6, y: m ? 1.7 : -0.2, s: m ? 0.62 : 0.75, rx: 0.42, o: 1 },    // 4 Pi cluster (featured)
       { x: 0, y: 0, s: m ? 0.75 : 1, rx: 1.05, o: 0.7 },                       // 5 galaxy (skills)
       { x: 0, y: 0, s: m ? 0.75 : 1, rx: 0.5, o: 0.55 },                       // 6 ring (contact)
-      { x: m ? 0 : -3.6, y: m ? 1.2 : 0.2, s: m ? 0.7 : 0.8, rx: 0, o: m ? 0.3 : 0.75 }, // 7 sphere behind portrait (about)
+      { x: m ? 0 : -3.6, y: m ? 1.2 : 0.2, s: m ? 0.7 : 0.8, rx: 0, o: m ? 0.3 : 0.75 }, // 7 sphere behind the heading (about)
       { x: m ? 0 : -3.4, y: 0, s: m ? 0.6 : 0.7, rx: 0.42, o: m ? 0.2 : 0.35 },       // 8 Pi cluster, dimmed (thesis deep dive)
     ];
   };
@@ -595,18 +595,6 @@ if (stage) {
     });
   });
 }
-
-/* ---------------------------------------------------------
-   Profile photo (optional): set data-photo on .portrait
-   --------------------------------------------------------- */
-document.querySelectorAll(".portrait[data-photo]").forEach((el) => {
-  const src = el.dataset.photo;
-  if (!src) return;
-  const img = new Image();
-  img.alt = "Portrait of Yad Soran Tawfeeq";
-  img.onload = () => { el.prepend(img); el.classList.add("has-photo"); };
-  img.src = src;
-});
 
 /* ---------------------------------------------------------
    Project case studies

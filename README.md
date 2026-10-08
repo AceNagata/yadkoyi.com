@@ -12,7 +12,6 @@ A static, dependency-free site (no build step) with:
 
 ## Updating content
 
-- **Profile photo:** put a photo at `assets/img/profile.jpg`, then in `index.html` set `data-photo="assets/img/profile.jpg"` on the `.portrait` element. Until then a monogram is shown.
 - **CV:** replace `assets/docs/Yad_Soran_Tawfeeq_CV.pdf` (keep the file name, or update the links).
 - **Project case studies:** each project card in `index.html` has a hidden `.case` block that the pop-up displays.
 
