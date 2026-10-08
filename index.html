@@ -1,0 +1,608 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>Yad Soran Tawfeeq — Software & Network Engineer</title>
+  <meta name="description" content="Yad Soran Tawfeeq (yadkoyi) — Software engineer and network & infrastructure engineer based in Erbil, Kurdistan. Full-stack development, cloud, networking and AV systems." />
+  <meta name="theme-color" content="#000000" />
+  <meta property="og:title" content="Yad Soran Tawfeeq — Software & Network Engineer" />
+  <meta property="og:description" content="Full-stack software, networks and infrastructure. Erbil, Kurdistan." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://yadkoyi.com" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%232997ff'/%3E%3Cstop offset='1' stop-color='%23bf5af2'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='64' height='64' rx='16' fill='%23000'/%3E%3Cpath d='M18 16l14 18 14-18M32 34v16' stroke='url(%23g)' stroke-width='6' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/css/styles.css" />
+  <script>
+    // Hide reveal targets until JS animates them; fall back to plain content if scripts fail.
+    document.documentElement.classList.add("js");
+    setTimeout(function () {
+      if (window.__siteReady) return;
+      document.documentElement.classList.remove("js");
+      var l = document.getElementById("loader");
+      if (l) l.classList.add("is-done");
+    }, 5000);
+  </script>
+</head>
+<body>
+  <!-- Fixed WebGL stage that morphs as you scroll -->
+  <canvas id="stage" aria-hidden="true"></canvas>
+  <div class="vignette" aria-hidden="true"></div>
+
+  <div class="loader" id="loader" aria-hidden="true">
+    <div class="loader-mark">Y</div>
+    <div class="loader-bar"><span></span></div>
+  </div>
+
+  <header class="nav" id="nav">
+    <a href="#top" class="nav-logo" aria-label="Home">yadkoyi</a>
+    <nav class="nav-links" id="navLinks">
+      <a href="#about">About</a>
+      <a href="#work">Disciplines</a>
+      <a href="#experience">Experience</a>
+      <a href="#projects">Projects</a>
+      <a href="#skills">Skills</a>
+      <a href="assets/docs/Yad_Soran_Tawfeeq_CV.pdf" target="_blank" rel="noopener">CV</a>
+      <a href="#contact" class="nav-cta">Contact</a>
+    </nav>
+    <button class="nav-toggle" id="navToggle" aria-label="Open menu" aria-expanded="false" aria-controls="navLinks">
+      <span></span><span></span>
+    </button>
+  </header>
+
+  <div class="progress" aria-hidden="true"><span id="progressBar"></span></div>
+
+  <main id="top">
+    <!-- ============ HERO ============ -->
+    <section class="hero" data-shape="0" id="hero">
+      <div class="hero-inner">
+        <p class="eyebrow hero-anim">Software &middot; Networks &middot; Infrastructure</p>
+        <h1 class="hero-title hero-anim">
+          <span class="line">Yad Soran</span>
+          <span class="line grad">Tawfeeq.</span>
+        </h1>
+        <p class="hero-sub hero-anim">Software engineer who also builds the networks it runs on. Based in Erbil, Kurdistan.</p>
+        <div class="hero-actions hero-anim">
+          <a class="btn btn-primary" href="#projects">See my work</a>
+          <a class="btn btn-ghost" href="assets/docs/Yad_Soran_Tawfeeq_CV.pdf" target="_blank" rel="noopener">Download CV <span aria-hidden="true">&darr;</span></a>
+        </div>
+      </div>
+      <div class="scroll-hint" aria-hidden="true"><span></span>Scroll</div>
+    </section>
+
+    <!-- ============ ABOUT ============ -->
+    <section class="about" id="about" data-shape="7">
+      <div class="container about-grid">
+        <div class="about-head">
+          <p class="eyebrow reveal">About me</p>
+          <h2 class="section-title reveal">Two tracks.<br /><span class="muted">One career.</span></h2>
+        </div>
+        <div class="about-copy">
+          <div class="about-text">
+            <p class="reveal">I'm Yad Soran Tawfeeq, also known online as <strong>yadkoyi</strong>. I studied Software Engineering at the University of Kurdistan Hewler (UKH) from 2021 to 2025. My work has always run on two tracks: writing software, and building the networks that software depends on.</p>
+            <p class="reveal">I started in web development. I built Laravel sites at Al-Hayat Co. and Spring Boot applications for internal telecom systems at Korek Telecom. At Link Data I combined full-stack work with server administration and cloud hosting.</p>
+            <p class="reveal">Since then I've moved deeper into infrastructure. I was an AV Engineer at Alcove in Erbil Avenue, and I'm now the Network &amp; Infrastructure Engineer at Arena Erbil. There I run the core network, the MikroTik routing, the VLANs and the site-wide audio-visual systems.</p>
+            <p class="reveal">I keep building outside work too: a live scoreboard and broadcast overlay for football matches and tournaments, and Runway, a planning app for small teams.</p>
+          </div>
+          <dl class="facts reveal">
+            <div><dt>Now</dt><dd>Network &amp; Infrastructure Engineer, Arena Erbil</dd></div>
+            <div><dt>Based in</dt><dd>Erbil, Kurdistan Region, Iraq</dd></div>
+            <div><dt>Studied</dt><dd>Software Engineering, UKH (2021–2025)</dd></div>
+            <div><dt>Speaks</dt><dd>Kurdish, Arabic, English</dd></div>
+          </dl>
+          <div class="about-actions reveal">
+            <a class="btn btn-primary" href="assets/docs/Yad_Soran_Tawfeeq_CV.pdf" target="_blank" rel="noopener">Download CV <span aria-hidden="true">&darr;</span></a>
+            <a class="btn btn-ghost" href="#contact">Get in touch <span aria-hidden="true">&rarr;</span></a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ STATEMENT (word-by-word fill) ============ -->
+    <section class="statement" data-shape="1">
+      <div class="statement-pin">
+        <p class="statement-text" data-split>
+          I write code for the web, mobile and the cloud — and I configure the routers, switches and VLANs underneath it. From Spring Boot and Laravel to MikroTik and Cisco, I care about systems that are fast, secure and always on.
+        </p>
+      </div>
+    </section>
+
+    <!-- ============ BIG NUMBERS ============ -->
+    <section class="numbers" data-shape="1">
+      <div class="container numbers-grid">
+        <div class="num reveal"><span class="num-val" data-count="5">0</span><span class="num-label">Roles across software, cloud, networking &amp; AV</span></div>
+        <div class="num reveal"><span class="num-val" data-count="12" data-suffix="+">0</span><span class="num-label">Projects built — web, mobile, games &amp; AI</span></div>
+        <div class="num reveal"><span class="num-val" data-count="2">0</span><span class="num-label">First-place academic awards</span></div>
+        <div class="num reveal"><span class="num-val" data-count="3">0</span><span class="num-label">Languages — Kurdish, Arabic &amp; English</span></div>
+      </div>
+    </section>
+
+    <!-- ============ DISCIPLINES (horizontal pinned scroll) ============ -->
+    <section class="disciplines" id="work" data-shape="2">
+      <div class="disc-pin">
+        <div class="disc-head container">
+          <p class="eyebrow">What I do</p>
+          <h2 class="section-title">Three disciplines.<br /><span class="muted">One engineer.</span></h2>
+        </div>
+        <div class="disc-track" id="discTrack">
+          <article class="disc-card tilt">
+            <div class="disc-icon" aria-hidden="true">
+              <svg viewBox="0 0 48 48"><path d="M16 14L6 24l10 10M32 14l10 10-10 10M27 10l-6 28" /></svg>
+            </div>
+            <span class="disc-num">01</span>
+            <h3>Software Engineering</h3>
+            <p>Full-stack web apps with Spring Boot, Laravel and modern JavaScript. Mobile apps in Flutter and React Native. Clean, reusable components and solid backends on SQL, MySQL and PostgreSQL.</p>
+            <ul class="chips"><li>Spring Boot</li><li>Laravel</li><li>Flutter</li><li>JavaScript</li><li>Tailwind</li></ul>
+          </article>
+          <article class="disc-card tilt">
+            <div class="disc-icon" aria-hidden="true">
+              <svg viewBox="0 0 48 48"><circle cx="24" cy="10" r="4"/><circle cx="10" cy="36" r="4"/><circle cx="38" cy="36" r="4"/><path d="M22 13.5L12 32.5M26 13.5l10 19M14 36h20"/></svg>
+            </div>
+            <span class="disc-num">02</span>
+            <h3>Networking &amp; Routing</h3>
+            <p>VLANs, subnet design, virtual switching and public IP allocation. Core routing and switching on MikroTik and enterprise gear, topology design and simulation with Cisco Packet Tracer.</p>
+            <ul class="chips"><li>MikroTik</li><li>Cisco</li><li>VLANs</li><li>Subnetting</li><li>Monitoring</li></ul>
+          </article>
+          <article class="disc-card tilt">
+            <div class="disc-icon" aria-hidden="true">
+              <svg viewBox="0 0 48 48"><rect x="8" y="8" width="32" height="10" rx="2"/><rect x="8" y="22" width="32" height="10" rx="2"/><path d="M14 13h2M14 27h2M8 40h32M24 32v8"/></svg>
+            </div>
+            <span class="disc-num">03</span>
+            <h3>Cloud &amp; Infrastructure</h3>
+            <p>Servers, storage and OS environments. Cloud-hosted deployments with secure pipelines, plus large-scale AV systems, remote OTA access, IP endpoints and network-managed displays.</p>
+            <ul class="chips"><li>Cloud</li><li>Linux</li><li>Security</li><li>AV over IP</li><li>Scripting</li></ul>
+          </article>
+          <article class="disc-card disc-card--end">
+            <p class="eyebrow">Daily drivers</p>
+            <h3 class="grad">Dart · Java · Python · C++ · C# · SQL</h3>
+            <p>Plus Google Workspace and advanced MS Office for everything around the code.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ EXPERIENCE ============ -->
+    <section class="experience" id="experience" data-shape="3">
+      <div class="container">
+        <p class="eyebrow reveal">Experience</p>
+        <h2 class="section-title reveal">Where I've worked.</h2>
+        <div class="timeline">
+          <div class="timeline-line" aria-hidden="true"><span id="timelineFill"></span></div>
+
+          <article class="job">
+            <div class="job-dot" aria-hidden="true"></div>
+            <div class="job-meta"><span class="job-date">Apr 2026 — Present</span><span class="tag tag-live">Current</span></div>
+            <h3>Network &amp; Infrastructure Engineer</h3>
+            <p class="job-co">Arena Erbil</p>
+            <ul>
+              <li>Run core networking: VLANs, virtual switching and ISP-sourced public IP allocations.</li>
+              <li>Administer MikroTik routers and enterprise switches for high availability.</li>
+              <li>Troubleshoot, find root causes, tune performance and upgrade hardware across the site.</li>
+              <li>Centralised site-wide AV systems, remote OTA access, IP endpoints and network-managed displays.</li>
+              <li>Monitor and manage network traffic to keep the business running.</li>
+            </ul>
+            <div class="job-tools"><span class="job-tools-label">Tools</span><ul class="chips"><li>MikroTik</li><li>Enterprise switches</li><li>VLANs</li><li>Virtual switching</li><li>ISP public IPs</li><li>AV over IP</li><li>Remote OTA access</li><li>Traffic monitoring</li></ul></div>
+          </article>
+
+          <article class="job">
+            <div class="job-dot" aria-hidden="true"></div>
+            <div class="job-meta"><span class="job-date">Feb 2026 — Apr 2026</span></div>
+            <h3>AV Engineer</h3>
+            <p class="job-co">Erbil Avenue — Alcove</p>
+            <ul>
+              <li>Designed, configured and supported site-wide private networks, subnets and local switching.</li>
+              <li>Maintained integrated audio-visual routing and hardware, with a focus on reliability.</li>
+            </ul>
+            <div class="job-tools"><span class="job-tools-label">Tools</span><ul class="chips"><li>Private networks</li><li>Subnetting</li><li>Local switching</li><li>AV routing</li><li>AV hardware</li></ul></div>
+          </article>
+
+          <article class="job">
+            <div class="job-dot" aria-hidden="true"></div>
+            <div class="job-meta"><span class="job-date">Nov 2024 — Feb 2025</span></div>
+            <h3>Full Stack Developer &amp; Cloud Technician</h3>
+            <p class="job-co">Link Data</p>
+            <ul>
+              <li>Administered servers, storage systems and operating system environments.</li>
+              <li>Configured network topologies, routing and connectivity simulations in Cisco Packet Tracer.</li>
+              <li>Managed cloud-hosted servers with secure deployment pipelines and reliable access.</li>
+            </ul>
+            <div class="job-tools"><span class="job-tools-label">Tools</span><ul class="chips"><li>Servers &amp; storage</li><li>OS administration</li><li>Cisco Packet Tracer</li><li>Routing</li><li>Cloud hosting</li><li>Deployment pipelines</li></ul></div>
+          </article>
+
+          <article class="job">
+            <div class="job-dot" aria-hidden="true"></div>
+            <div class="job-meta"><span class="job-date">Sep 2024</span><span class="tag">Internship</span></div>
+            <h3>Fullstack Developer</h3>
+            <p class="job-co">Korek Telecom</p>
+            <ul>
+              <li>Built full-featured websites with Spring Boot.</li>
+              <li>Developed internal enterprise applications and integrated templates into telecom systems.</li>
+            </ul>
+            <div class="job-tools"><span class="job-tools-label">Tools</span><ul class="chips"><li>Java</li><li>Spring Boot</li><li>Enterprise apps</li><li>Template integration</li></ul></div>
+          </article>
+
+          <article class="job">
+            <div class="job-dot" aria-hidden="true"></div>
+            <div class="job-meta"><span class="tag">Internship</span></div>
+            <h3>Web Developer</h3>
+            <p class="job-co">Al-Hayat Co.</p>
+            <ul>
+              <li>Migrated static templates to dynamic Laravel with optimised routing.</li>
+              <li>Created reusable Blade components and maintained backend workflows.</li>
+            </ul>
+            <div class="job-tools"><span class="job-tools-label">Tools</span><ul class="chips"><li>PHP</li><li>Laravel</li><li>Blade</li><li>Routing</li></ul></div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ FEATURED PROJECT (pinned, scrubbed) ============ -->
+    <section class="featured" id="projects" data-shape="4">
+      <div class="featured-pin">
+        <div class="featured-copy">
+          <p class="eyebrow">Featured · Thesis</p>
+          <h2 class="featured-title">
+            <span class="ft-line">Four Raspberry Pis.</span>
+            <span class="ft-line grad">One supercomputer.</span>
+          </h2>
+          <div class="featured-steps">
+            <p class="fstep">A hybrid MPICH cluster — one Raspberry Pi 5 leading three Pi 3B+ nodes.</p>
+            <p class="fstep">Parallel jobs written in Python with <code>mpi4py</code>.</p>
+            <p class="fstep">Benchmarks for matrix multiplication, image processing and stress testing.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ THESIS DEEP DIVE ============ -->
+    <section class="thesis" id="thesis" data-shape="8">
+      <div class="container">
+        <p class="eyebrow reveal">Thesis deep dive</p>
+        <h2 class="section-title reveal">Inside the cluster.</h2>
+
+        <div class="thesis-grid">
+          <figure class="cluster-diagram reveal" aria-labelledby="clusterCaption">
+            <svg viewBox="0 0 440 340" role="img" aria-label="Diagram: a Raspberry Pi 5 head node connected through a network switch to three Raspberry Pi 3B+ worker nodes">
+              <defs>
+                <linearGradient id="dg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#2997ff"/><stop offset="1" stop-color="#bf5af2"/></linearGradient>
+              </defs>
+              <g class="d-links">
+                <path d="M220 92 V140" /><path d="M220 176 V206 H80 V236" /><path d="M220 176 V236" /><path d="M220 206 H360 V236" />
+              </g>
+              <g class="d-node d-head">
+                <rect x="140" y="28" width="160" height="64" rx="14" />
+                <text x="220" y="56" class="d-title">Raspberry Pi 5</text>
+                <text x="220" y="76" class="d-sub">Head node · rank 0</text>
+              </g>
+              <g class="d-node d-switch">
+                <rect x="160" y="140" width="120" height="36" rx="10" />
+                <text x="220" y="163" class="d-sub">Network switch</text>
+              </g>
+              <g class="d-node">
+                <rect x="20" y="236" width="120" height="64" rx="14" />
+                <text x="80" y="264" class="d-title">Pi 3B+</text><text x="80" y="284" class="d-sub">Worker · rank 1</text>
+              </g>
+              <g class="d-node">
+                <rect x="160" y="236" width="120" height="64" rx="14" />
+                <text x="220" y="264" class="d-title">Pi 3B+</text><text x="220" y="284" class="d-sub">Worker · rank 2</text>
+              </g>
+              <g class="d-node">
+                <rect x="300" y="236" width="120" height="64" rx="14" />
+                <text x="360" y="264" class="d-title">Pi 3B+</text><text x="360" y="284" class="d-sub">Worker · rank 3</text>
+              </g>
+              <circle class="d-packet" r="4" />
+            </svg>
+            <figcaption id="clusterCaption" class="muted">One Pi 5 coordinates the job. Three Pi 3B+ boards do their share of the work in parallel.</figcaption>
+          </figure>
+
+          <div class="thesis-copy">
+            <dl class="spec">
+              <div><dt>Head node</dt><dd>Raspberry Pi 5 · 4× Cortex-A76 @ 2.4 GHz</dd></div>
+              <div><dt>Workers</dt><dd>3× Raspberry Pi 3B+ · 4× Cortex-A53 @ 1.4 GHz, 1 GB RAM each</dd></div>
+              <div><dt>Total cores</dt><dd class="spec-num">16</dd></div>
+              <div><dt>Software</dt><dd>MPICH · Python · mpi4py</dd></div>
+              <div><dt>Benchmarks</dt><dd>Matrix multiplication · Image processing · Stress tests</dd></div>
+            </dl>
+
+            <ol class="steps">
+              <li class="reveal"><span class="step-n">1</span><div><h3>Split the job</h3><p>The head node divides the work, for example the rows of a large matrix or strips of an image.</p></div></li>
+              <li class="reveal"><span class="step-n">2</span><div><h3>Send it out</h3><p>MPI sends each piece to a node over the network. Every node, the head included, gets its own rank.</p></div></li>
+              <li class="reveal"><span class="step-n">3</span><div><h3>Compute in parallel</h3><p>All four boards work on their piece at the same time.</p></div></li>
+              <li class="reveal"><span class="step-n">4</span><div><h3>Bring it back</h3><p>The results are gathered on the head node and combined into the final answer.</p></div></li>
+            </ol>
+            <p class="thesis-note reveal">Mixing one Pi 5 with three Pi 3B+ boards makes this a <strong>hybrid</strong> cluster: the head node's cores are much faster than the workers'. The benchmark suite runs real workloads across that uneven hardware.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ PROJECT GRID ============ -->
+    <section class="projects" data-shape="4">
+      <div class="container">
+        <p class="eyebrow reveal">Selected projects</p>
+        <h2 class="section-title reveal">Things I've built.</h2>
+        <p class="section-lead reveal muted">Tap any project to read the case study.</p>
+        <div class="project-grid">
+          <article class="project tilt project--wide" data-case-title="Kurdistan Gaming Festival" data-case-kind="Production platform">
+            <div class="project-glow" aria-hidden="true"></div>
+            <span class="project-kind">Production platform</span>
+            <h3>Kurdistan Gaming Festival</h3>
+            <p>The production platform for the first Kurdistan Gaming Festival, with secure admin panels, a central database and solid backend endpoints.</p>
+            <div class="project-foot"><ul class="chips"><li>Full stack</li><li>Admin panels</li><li>Database</li></ul><a href="https://gaming.krd" target="_blank" rel="noopener" class="project-link">gaming.krd &nearr;</a></div>
+            <button class="case-btn" type="button" aria-haspopup="dialog">Read case study <span aria-hidden="true">&rarr;</span></button>
+            <div class="case" hidden>
+              <h4>The problem</h4><p>The first edition of the Kurdistan Gaming Festival needed a public website and a back office that could hold up on a live event.</p>
+              <h4>What I built</h4><ul class="case-list"><li>The production platform behind gaming.krd.</li><li>Secure administrative panels for the organisers.</li><li>A centralised database setup and robust backend endpoints.</li></ul>
+              <h4>My role</h4><p>Developer of the production platform.</p><h4>Stack</h4><ul class="chips"><li>Full-stack web</li><li>Backend APIs</li><li>Database</li><li>Admin panels</li></ul>
+              <p class="case-link"><a class="btn btn-ghost" href="https://gaming.krd" target="_blank" rel="noopener">Open gaming.krd &nearr;</a></p>
+            </div>
+          </article>
+          <article class="project tilt project--wide" data-case-title="Match Score Manager" data-case-kind="Live broadcast tool">
+            <div class="project-glow" aria-hidden="true"></div>
+            <span class="project-kind">Live broadcast tool</span>
+            <h3>Match Score Manager</h3>
+            <p>A live football scoreboard, match clock and penalty-shootout manager with overlays that drop straight into OBS.</p>
+            <div class="project-foot"><ul class="chips"><li>Node.js</li><li>Socket.IO</li><li>OBS</li></ul><a href="https://github.com/AceNagata/Match-Score-Manager" target="_blank" rel="noopener" class="project-link">GitHub &nearr;</a></div>
+            <button class="case-btn" type="button" aria-haspopup="dialog">Read case study <span aria-hidden="true">&rarr;</span></button>
+            <div class="case" hidden>
+              <h4>The problem</h4><p>Streaming a local football match or tournament needs an on-screen scoreboard that one operator can control live, without editing graphics by hand.</p>
+              <h4>What I built</h4><ul class="case-list"><li>A control panel for team names, colours and logos, the score, a match clock with an extra-time indicator, and penalty shootouts.</li><li>Transparent overlays added to OBS as Browser Sources. They update instantly over WebSockets, even from another machine on the same network.</li><li>Separate clock and penalty scenes, so each can be placed on its own.</li><li>A bracket maker for 4, 8 or 16 teams with a team roster, plus a live bracket overlay that scales to fit.</li><li>Two overlay styles, and a “Start this match” button that loads a bracket pairing into the scoreboard.</li></ul>
+              <h4>Stack</h4><ul class="chips"><li>Node.js</li><li>Express</li><li>Socket.IO</li><li>HTML/CSS/JS</li><li>OBS Browser Sources</li><li>Firebase Hosting</li></ul>
+              <p class="case-link"><a class="btn btn-ghost" href="https://github.com/AceNagata/Match-Score-Manager" target="_blank" rel="noopener">Open GitHub &nearr;</a></p>
+            </div>
+          </article>
+          <article class="project tilt project--wide" data-case-title="Runway" data-case-kind="Web app · TypeScript">
+            <div class="project-glow" aria-hidden="true"></div>
+            <span class="project-kind">Web app · TypeScript</span>
+            <h3>Runway</h3>
+            <p>A shared planning app for small teams: notes, tasks, a scheduler and calendar, task hand-off, notifications and reports.</p>
+            <div class="project-foot"><ul class="chips"><li>React</li><li>TypeScript</li><li>Firebase</li></ul><a href="https://github.com/AceNagata/Runway" target="_blank" rel="noopener" class="project-link">GitHub &nearr;</a></div>
+            <button class="case-btn" type="button" aria-haspopup="dialog">Read case study <span aria-hidden="true">&rarr;</span></button>
+            <div class="case" hidden>
+              <h4>The problem</h4><p>Small teams juggle notes, tasks and schedules across separate tools, and lose track of who owns what.</p>
+              <h4>What I built</h4><ul class="case-list"><li>Notes, tasks, a scheduler and calendar, notifications and on-demand reports in one app.</li><li>Task hand-off down a reporting line. The reporting tree is also the permission model, so people only see the work below them.</li><li>Sign-up, sign-in and organisations with join codes, synced live through Firestore.</li><li>An offline app shell and system notifications through a service worker.</li><li>A design system built only from CSS custom properties, with no CSS framework.</li></ul>
+              <h4>Stack</h4><ul class="chips"><li>React 18</li><li>TypeScript</li><li>Vite</li><li>React Router</li><li>Firebase Auth</li><li>Firestore</li><li>Service worker</li></ul>
+              <p class="case-link"><a class="btn btn-ghost" href="https://github.com/AceNagata/Runway" target="_blank" rel="noopener">Open GitHub &nearr;</a></p>
+            </div>
+          </article>
+          <article class="project tilt" data-case-title="Cat vs Dog Classifier" data-case-kind="AI · Deep learning">
+            <div class="project-glow" aria-hidden="true"></div>
+            <span class="project-kind">AI · Deep learning</span>
+            <h3>Cat vs Dog Classifier</h3>
+            <p>A CNN image classifier with a full GUI for training and evaluation, plus live metric charts.</p>
+            <div class="project-foot"><ul class="chips"><li>Python</li><li>CNN</li></ul><a href="https://github.com/AceNagata/CatVsDogAI" target="_blank" rel="noopener" class="project-link">GitHub &nearr;</a></div>
+            <button class="case-btn" type="button" aria-haspopup="dialog">Read case study <span aria-hidden="true">&rarr;</span></button>
+            <div class="case" hidden>
+              <h4>The problem</h4><p>Training a neural network is hard to follow from the command line. This project makes the whole process visible.</p>
+              <h4>What I built</h4><ul class="case-list"><li>A convolutional neural network that tells cats from dogs in photos.</li><li>A GUI for training and evaluating the model.</li><li>Real-time visualisation of the training metrics.</li></ul>
+              <h4>Stack</h4><ul class="chips"><li>Python</li><li>Deep learning</li><li>CNN</li><li>GUI</li></ul>
+              <p class="case-link"><a class="btn btn-ghost" href="https://github.com/AceNagata/CatVsDogAI" target="_blank" rel="noopener">Open GitHub &nearr;</a></p>
+            </div>
+          </article>
+          <article class="project tilt" data-case-title="Dinar Suika" data-case-kind="Game · Unity">
+            <div class="project-glow" aria-hidden="true"></div>
+            <span class="project-kind">Game · Unity</span>
+            <h3>Dinar Suika</h3>
+            <p>A Suika-style physics puzzle game built around Iraqi Dinar currency instead of fruit.</p>
+            <div class="project-foot"><ul class="chips"><li>Unity</li><li>C#</li><li>Physics</li></ul><a href="https://github.com/AceNagata/Dinar-Suika" target="_blank" rel="noopener" class="project-link">GitHub &nearr;</a></div>
+            <button class="case-btn" type="button" aria-haspopup="dialog">Read case study <span aria-hidden="true">&rarr;</span></button>
+            <div class="case" hidden>
+              <h4>The problem</h4><p>A familiar puzzle format, rebuilt around something every player in Iraq and Kurdistan recognises.</p>
+              <h4>What I built</h4><ul class="case-list"><li>Aim with a guide line and drop Dinar pieces into the play area.</li><li>Matching pieces merge into the next value through physics-driven collisions.</li><li>Scoring, a game-over check, and a fade-out reset.</li></ul>
+              <h4>Stack</h4><ul class="chips"><li>Unity</li><li>C#</li><li>Universal Render Pipeline</li><li>TextMesh Pro</li></ul>
+              <p class="case-link"><a class="btn btn-ghost" href="https://github.com/AceNagata/Dinar-Suika" target="_blank" rel="noopener">Open GitHub &nearr;</a></p>
+            </div>
+          </article>
+          <article class="project tilt" data-case-title="Movie App" data-case-kind="Mobile · React Native">
+            <div class="project-glow" aria-hidden="true"></div>
+            <span class="project-kind">Mobile · React Native</span>
+            <h3>Movie App</h3>
+            <p>A cross-platform movie browser for iOS, Android and the web with search, saved movies and detail pages.</p>
+            <div class="project-foot"><ul class="chips"><li>React Native</li><li>Expo</li><li>TypeScript</li></ul><a href="https://github.com/AceNagata/Movie-App" target="_blank" rel="noopener" class="project-link">GitHub &nearr;</a></div>
+            <button class="case-btn" type="button" aria-haspopup="dialog">Read case study <span aria-hidden="true">&rarr;</span></button>
+            <div class="case" hidden>
+              <h4>The problem</h4><p>One codebase for a movie app that runs on phones and in the browser.</p>
+              <h4>What I built</h4><ul class="case-list"><li>Tabbed navigation with Home, Search, Saved and Profile screens.</li><li>A detail page for each movie, using file-based routing.</li><li>Styling with Tailwind classes through NativeWind.</li></ul>
+              <h4>Stack</h4><ul class="chips"><li>React Native</li><li>Expo</li><li>Expo Router</li><li>TypeScript</li><li>NativeWind</li></ul>
+              <p class="case-link"><a class="btn btn-ghost" href="https://github.com/AceNagata/Movie-App" target="_blank" rel="noopener">Open GitHub &nearr;</a></p>
+            </div>
+          </article>
+          <article class="project tilt" data-case-title="SoulFood" data-case-kind="Web · Multilingual">
+            <div class="project-glow" aria-hidden="true"></div>
+            <span class="project-kind">Web · Multilingual</span>
+            <h3>SoulFood</h3>
+            <p>A recipe-sharing web app in English, Kurdish and Arabic, with a bright, responsive UI.</p>
+            <div class="project-foot"><ul class="chips"><li>Web</li><li>i18n</li><li>RTL</li></ul></div>
+            <button class="case-btn" type="button" aria-haspopup="dialog">Read case study <span aria-hidden="true">&rarr;</span></button>
+            <div class="case" hidden>
+              <h4>The problem</h4><p>Most recipe sites only speak English. SoulFood lets people share recipes in the languages they actually cook in.</p>
+              <h4>What I built</h4><ul class="case-list"><li>Recipe sharing in English, Kurdish and Arabic, including right-to-left layouts.</li><li>A vibrant, responsive interface that works on phones and desktops.</li></ul>
+              <h4>Stack</h4><ul class="chips"><li>HTML</li><li>CSS</li><li>JavaScript</li><li>Internationalisation</li></ul>
+              
+            </div>
+          </article>
+          <article class="project tilt" data-case-title="Electricity Saver" data-case-kind="Mobile · Flutter">
+            <div class="project-glow" aria-hidden="true"></div>
+            <span class="project-kind">Mobile · Flutter</span>
+            <h3>Electricity Saver</h3>
+            <p>Tracks electricity use in real time. Users log appliance usage, get energy-saving tips and set daily reminders.</p>
+            <div class="project-foot"><ul class="chips"><li>Flutter</li><li>Dart</li></ul></div>
+            <button class="case-btn" type="button" aria-haspopup="dialog">Read case study <span aria-hidden="true">&rarr;</span></button>
+            <div class="case" hidden>
+              <h4>The problem</h4><p>People rarely know which appliances use the most power until the bill arrives.</p>
+              <h4>What I built</h4><ul class="case-list"><li>Real-time logging of appliance usage.</li><li>Energy-saving tips based on that usage.</li><li>Daily reminders to build better habits.</li></ul>
+              <h4>Stack</h4><ul class="chips"><li>Flutter</li><li>Dart</li><li>Mobile</li></ul>
+              
+            </div>
+          </article>
+          <article class="project tilt" data-case-title="EasyQ" data-case-kind="EdTech">
+            <div class="project-glow" aria-hidden="true"></div>
+            <span class="project-kind">EdTech</span>
+            <h3>EasyQ</h3>
+            <p>A multiple-choice quiz platform where teachers build quizzes quickly and students get instant feedback.</p>
+            <div class="project-foot"><ul class="chips"><li>Web</li><li>Education</li></ul></div>
+            <button class="case-btn" type="button" aria-haspopup="dialog">Read case study <span aria-hidden="true">&rarr;</span></button>
+            <div class="case" hidden>
+              <h4>The problem</h4><p>Making and marking tests by hand takes teachers a lot of time, and students wait days for results.</p>
+              <h4>What I built</h4><ul class="case-list"><li>Quiz creation for teachers in a few steps.</li><li>Instant feedback for students when they submit.</li><li>An interactive flow designed to simplify testing in class.</li></ul>
+              <h4>Stack</h4><ul class="chips"><li>Web app</li><li>Database</li><li>Education</li></ul>
+              
+            </div>
+          </article>
+          <article class="project tilt" data-case-title="Govand Baban Firm" data-case-kind="Business website">
+            <div class="project-glow" aria-hidden="true"></div>
+            <span class="project-kind">Business website</span>
+            <h3>Govand Baban Firm</h3>
+            <p>A modern business website for the Govand Baban firm, covering its services, background and contact details.</p>
+            <div class="project-foot"><ul class="chips"><li>Web</li><li>UI</li></ul></div>
+            <button class="case-btn" type="button" aria-haspopup="dialog">Read case study <span aria-hidden="true">&rarr;</span></button>
+            <div class="case" hidden>
+              <h4>The problem</h4><p>The firm needed a professional online presence that explains what it does and how to reach it.</p>
+              <h4>What I built</h4><ul class="case-list"><li>Pages for the firm&#x27;s services and background.</li><li>Clear contact channels.</li><li>A clean, accessible layout.</li></ul>
+              <h4>Stack</h4><ul class="chips"><li>HTML</li><li>CSS</li><li>JavaScript</li></ul>
+              
+            </div>
+          </article>
+          <article class="project tilt" data-case-title="Venture Dental" data-case-kind="Web · Laravel">
+            <div class="project-glow" aria-hidden="true"></div>
+            <span class="project-kind">Web · Laravel</span>
+            <h3>Venture Dental</h3>
+            <p>A website for Ventures Dental Supplies, built as a team and moved to Laravel with Blade components.</p>
+            <div class="project-foot"><ul class="chips"><li>Laravel</li><li>Blade</li></ul><a href="https://github.com/AceNagata/Venture-Dental-Laravel" target="_blank" rel="noopener" class="project-link">GitHub &nearr;</a></div>
+            <button class="case-btn" type="button" aria-haspopup="dialog">Read case study <span aria-hidden="true">&rarr;</span></button>
+            <div class="case" hidden>
+              <h4>The problem</h4><p>A dental supplies company needed a website that is easy to maintain and extend.</p>
+              <h4>What I built</h4><ul class="case-list"><li>The site for Ventures Dental Supplies, first as static pages.</li><li>A Laravel version with Blade templates and routing.</li></ul>
+              <h4>My role</h4><p>Team member on a collaborative project supervised by Kak Alan Nahro.</p><h4>Stack</h4><ul class="chips"><li>PHP</li><li>Laravel</li><li>Blade</li><li>CSS</li></ul>
+              <p class="case-link"><a class="btn btn-ghost" href="https://github.com/AceNagata/Venture-Dental-Laravel" target="_blank" rel="noopener">Open GitHub &nearr;</a></p>
+            </div>
+          </article>
+          <article class="project tilt" data-case-title="Flappy Bird" data-case-kind="Game · Unity">
+            <div class="project-glow" aria-hidden="true"></div>
+            <span class="project-kind">Game · Unity</span>
+            <h3>Flappy Bird</h3>
+            <p>A Flappy Bird remake in Unity 2D, built to learn game loops, physics and collisions.</p>
+            <div class="project-foot"><ul class="chips"><li>Unity</li><li>C#</li><li>2D</li></ul><a href="https://github.com/AceNagata/Flappy-Bird-Unity-2D" target="_blank" rel="noopener" class="project-link">GitHub &nearr;</a></div>
+            <button class="case-btn" type="button" aria-haspopup="dialog">Read case study <span aria-hidden="true">&rarr;</span></button>
+            <div class="case" hidden>
+              <h4>The problem</h4><p>A small, complete game to learn Unity&#x27;s 2D tools from start to finish.</p>
+              <h4>What I built</h4><ul class="case-list"><li>Tap-to-flap physics and pipe obstacles.</li><li>Collision detection, scoring and restart.</li></ul>
+              <h4>Stack</h4><ul class="chips"><li>Unity</li><li>C#</li><li>2D physics</li></ul>
+              <p class="case-link"><a class="btn btn-ghost" href="https://github.com/AceNagata/Flappy-Bird-Unity-2D" target="_blank" rel="noopener">Open GitHub &nearr;</a></p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ SKILLS (scroll-driven marquees) ============ -->
+    <section class="skills" id="skills" data-shape="5">
+      <div class="container">
+        <p class="eyebrow reveal">Toolbox</p>
+        <h2 class="section-title reveal">Fluent in the full stack.</h2>
+      </div>
+      <div class="marquee" data-dir="1">
+        <div class="marquee-row">
+          <span>Flutter</span><span>Dart</span><span>JavaScript</span><span>HTML</span><span>CSS</span><span>Tailwind</span><span>Java</span><span>Spring Boot</span><span>Laravel</span><span>Python</span><span>C++</span><span>C#</span>
+        </div>
+      </div>
+      <div class="marquee marquee--outline" data-dir="-1">
+        <div class="marquee-row">
+          <span>MikroTik</span><span>Cisco</span><span>VLANs</span><span>Routing</span><span>Switching</span><span>Cloud</span><span>Linux</span><span>Monitoring</span><span>Security</span><span>AV over IP</span>
+        </div>
+      </div>
+      <div class="marquee" data-dir="1">
+        <div class="marquee-row">
+          <span>SQL</span><span>MySQL</span><span>PostgreSQL</span><span>GitHub</span><span>Unity</span><span>MPI</span><span>Google Workspace</span><span>MS Office</span><span>React Native</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ EDUCATION & ACHIEVEMENTS ============ -->
+    <section class="edu" data-shape="5">
+      <div class="container edu-grid">
+        <div class="edu-col">
+          <p class="eyebrow reveal">Education</p>
+          <h2 class="section-title reveal">Learning, always.</h2>
+          <ol class="edu-list">
+            <li class="reveal"><span class="edu-year">2021 — 2025</span><strong>University of Kurdistan Hewler (UKH)</strong><span class="muted">Software Engineering</span></li>
+            <li class="reveal"><span class="edu-year">2017 — 2021</span><strong>Hawler Typical Secondary School</strong><span class="muted">HTSS</span></li>
+            <li class="reveal"><span class="edu-year">2010 — 2017</span><strong>Cambridge International School</strong><span class="muted">CISK</span></li>
+          </ol>
+        </div>
+        <div class="edu-col">
+          <p class="eyebrow reveal">Awards &amp; certificates</p>
+          <div class="award tilt reveal">
+            <span class="award-medal" aria-hidden="true">1st</span>
+            <div><h3>Annual Binomial Acumen</h3><p class="muted">First place winner</p></div>
+          </div>
+          <div class="award tilt reveal">
+            <span class="award-medal" aria-hidden="true">1st</span>
+            <div><h3>Probability &amp; Statistics</h3><p class="muted">First place winner</p></div>
+          </div>
+          <div class="award tilt reveal">
+            <span class="award-medal award-medal--alt" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><rect x="6" y="7" width="12" height="10" rx="2"/><path d="M9 11h.01M15 11h.01M12 4v3M4 12h2M18 12h2M9 14h6"/></svg>
+            </span>
+            <div><h3>Certificate for Robotics Course</h3><p class="muted">Learned robotics with Dr. Ibrahim Hamarash at UKH</p></div>
+          </div>
+          <div class="award tilt reveal">
+            <span class="award-medal award-medal--alt" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M4 6h16v10H4zM8 20h8M12 16v4"/></svg>
+            </span>
+            <div><h3>Raspberry Pi MPICH Cluster</h3><p class="muted">Thesis project at UKH · <a href="#thesis" class="inline-link">See the deep dive</a></p></div>
+          </div>
+        </div>
+      </div>
+      <div class="container coursework">
+        <p class="eyebrow reveal">Core coursework at UKH</p>
+        <ul class="course-grid"><li class="course reveal"><span class="course-code">CSE204</span><strong>Computer Communications and Networks</strong><span class="muted">Network layers, protocols, addressing, routing and switching.</span></li><li class="course reveal"><span class="course-code">CSE205</span><strong>Computer Architecture and Organisation</strong><span class="muted">How CPUs, memory hierarchies and instruction sets work.</span></li><li class="course reveal"><span class="course-code">CSE302</span><strong>Operating Systems</strong><span class="muted">Processes, scheduling, memory management, file systems and concurrency.</span></li><li class="course reveal"><span class="course-code">CSE103</span><strong>Principles of Computer Systems</strong><span class="muted">How hardware and software fit together in a working computer.</span></li><li class="course reveal"><span class="course-code">CSE104</span><strong>Intro to Digital Logic and Electronics</strong><span class="muted">Logic gates, number systems and digital circuits.</span></li><li class="course reveal"><span class="course-code">CSE206</span><strong>Principles of Database Systems</strong><span class="muted">Relational design, SQL and normalisation.</span></li></ul>
+      </div>
+    </section>
+
+    <!-- ============ CONTACT ============ -->
+    <section class="contact" id="contact" data-shape="6">
+      <div class="container contact-inner">
+        <p class="eyebrow reveal">Contact</p>
+        <h2 class="contact-title">
+          <span class="ct-line">Let's build</span>
+          <span class="ct-line grad">something great.</span>
+        </h2>
+        <a class="contact-mail reveal" href="mailto:yadkoyiii@gmail.com">yadkoyiii@gmail.com</a>
+        <div class="contact-links reveal">
+          <a class="btn btn-ghost" href="https://github.com/AceNagata" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" aria-hidden="true" class="ico"><path d="M12 .5C5.7.5.5 5.7.5 12c0 5.1 3.3 9.4 7.9 10.9.6.1.8-.3.8-.6v-2c-3.2.7-3.9-1.5-3.9-1.5-.5-1.3-1.3-1.7-1.3-1.7-1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1 1.8 2.8 1.3 3.5 1 .1-.8.4-1.3.7-1.6-2.6-.3-5.3-1.3-5.3-5.7 0-1.3.5-2.3 1.2-3.1-.1-.3-.5-1.5.1-3.1 0 0 1-.3 3.3 1.2a11.5 11.5 0 0 1 6 0C17.3 4.7 18.3 5 18.3 5c.6 1.6.2 2.8.1 3.1.8.8 1.2 1.8 1.2 3.1 0 4.4-2.7 5.4-5.3 5.7.4.4.8 1.1.8 2.2v3.3c0 .3.2.7.8.6A11.5 11.5 0 0 0 23.5 12C23.5 5.7 18.3.5 12 .5z"/></svg>
+            GitHub
+          </a>
+          <a class="btn btn-ghost" href="https://www.linkedin.com/in/yadkoyi" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" aria-hidden="true" class="ico"><path d="M20.4 20.5h-3.6v-5.6c0-1.3 0-3-1.8-3s-2.1 1.4-2.1 2.9v5.7H9.3V9h3.4v1.6h.1c.5-.9 1.6-1.8 3.4-1.8 3.6 0 4.3 2.4 4.3 5.5v6.2zM5.3 7.4a2.1 2.1 0 1 1 0-4.2 2.1 2.1 0 0 1 0 4.2zM7.1 20.5H3.5V9h3.6v11.5zM22.2 0H1.8C.8 0 0 .8 0 1.7v20.6c0 .9.8 1.7 1.8 1.7h20.4c1 0 1.8-.8 1.8-1.7V1.7C24 .8 23.2 0 22.2 0z"/></svg>
+            LinkedIn
+          </a>
+          <a class="btn btn-ghost" href="assets/docs/Yad_Soran_Tawfeeq_CV.pdf" target="_blank" rel="noopener">Download CV <span aria-hidden="true">&darr;</span></a>
+        </div>
+        <p class="contact-loc reveal muted">Erbil, Kurdistan Region, Iraq</p>
+      </div>
+      <footer class="footer container">
+        <span>&copy; <span id="year"></span> Yad Soran Tawfeeq</span>
+        <a href="#top">Back to top &uarr;</a>
+      </footer>
+    </section>
+  </main>
+
+  <dialog class="case-dialog" id="caseDialog" aria-labelledby="caseTitle">
+    <div class="case-dialog-inner" data-lenis-prevent>
+      <button class="case-close" type="button" aria-label="Close case study">&times;</button>
+      <p class="project-kind" id="caseKind"></p>
+      <h2 id="caseTitle"></h2>
+      <div id="caseBody"></div>
+    </div>
+  </dialog>
+
+  <script src="assets/vendor/gsap.min.js"></script>
+  <script src="assets/vendor/ScrollTrigger.min.js"></script>
+  <script src="assets/vendor/lenis.min.js"></script>
+  <script type="module" src="assets/js/main.js"></script>
+</body>
+</html>
