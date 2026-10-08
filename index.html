@@ -1,0 +1,399 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>Yad Soran Tawfeeq — Software & Network Engineer</title>
+  <meta name="description" content="Yad Soran Tawfeeq (yadkoyi) — Software engineer and network & infrastructure engineer based in Erbil, Kurdistan. Full-stack development, cloud, networking and AV systems." />
+  <meta name="theme-color" content="#000000" />
+  <meta property="og:title" content="Yad Soran Tawfeeq — Software & Network Engineer" />
+  <meta property="og:description" content="Full-stack software, networks and infrastructure. Erbil, Kurdistan." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://yadkoyi.com" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%232997ff'/%3E%3Cstop offset='1' stop-color='%23bf5af2'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='64' height='64' rx='16' fill='%23000'/%3E%3Cpath d='M18 16l14 18 14-18M32 34v16' stroke='url(%23g)' stroke-width='6' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/css/styles.css" />
+  <script>
+    // Hide reveal targets until JS animates them; fall back to plain content if scripts fail.
+    document.documentElement.classList.add("js");
+    setTimeout(function () {
+      if (window.__siteReady) return;
+      document.documentElement.classList.remove("js");
+      var l = document.getElementById("loader");
+      if (l) l.classList.add("is-done");
+    }, 5000);
+  </script>
+</head>
+<body>
+  <!-- Fixed WebGL stage that morphs as you scroll -->
+  <canvas id="stage" aria-hidden="true"></canvas>
+  <div class="vignette" aria-hidden="true"></div>
+
+  <div class="loader" id="loader" aria-hidden="true">
+    <div class="loader-mark">Y</div>
+    <div class="loader-bar"><span></span></div>
+  </div>
+
+  <header class="nav" id="nav">
+    <a href="#top" class="nav-logo" aria-label="Home">yadkoyi</a>
+    <nav class="nav-links" id="navLinks">
+      <a href="#about">About</a>
+      <a href="#work">Disciplines</a>
+      <a href="#experience">Experience</a>
+      <a href="#projects">Projects</a>
+      <a href="#skills">Skills</a>
+      <a href="#contact" class="nav-cta">Contact</a>
+    </nav>
+    <button class="nav-toggle" id="navToggle" aria-label="Open menu" aria-expanded="false" aria-controls="navLinks">
+      <span></span><span></span>
+    </button>
+  </header>
+
+  <div class="progress" aria-hidden="true"><span id="progressBar"></span></div>
+
+  <main id="top">
+    <!-- ============ HERO ============ -->
+    <section class="hero" data-shape="0" id="hero">
+      <div class="hero-inner">
+        <p class="eyebrow hero-anim">Software &middot; Networks &middot; Infrastructure</p>
+        <h1 class="hero-title hero-anim">
+          <span class="line">Yad Soran</span>
+          <span class="line grad">Tawfeeq.</span>
+        </h1>
+        <p class="hero-sub hero-anim">Software engineer who also builds the networks it runs on. Based in Erbil, Kurdistan.</p>
+        <div class="hero-actions hero-anim">
+          <a class="btn btn-primary" href="#projects">See my work</a>
+          <a class="btn btn-ghost" href="#contact">Get in touch <span aria-hidden="true">&rarr;</span></a>
+        </div>
+      </div>
+      <div class="scroll-hint" aria-hidden="true"><span></span>Scroll</div>
+    </section>
+
+    <!-- ============ STATEMENT (word-by-word fill) ============ -->
+    <section class="statement" id="about" data-shape="1">
+      <div class="statement-pin">
+        <p class="statement-text" data-split>
+          I write code for the web, mobile and the cloud — and I configure the routers, switches and VLANs underneath it. From Spring Boot and Laravel to MikroTik and Cisco, I care about systems that are fast, secure and always on.
+        </p>
+      </div>
+    </section>
+
+    <!-- ============ BIG NUMBERS ============ -->
+    <section class="numbers" data-shape="1">
+      <div class="container numbers-grid">
+        <div class="num reveal"><span class="num-val" data-count="5">0</span><span class="num-label">Roles across software, cloud, networking &amp; AV</span></div>
+        <div class="num reveal"><span class="num-val" data-count="10" data-suffix="+">0</span><span class="num-label">Shipped projects — web, mobile, games &amp; AI</span></div>
+        <div class="num reveal"><span class="num-val" data-count="2">0</span><span class="num-label">First-place academic awards</span></div>
+        <div class="num reveal"><span class="num-val" data-count="3">0</span><span class="num-label">Languages — Kurdish, Arabic &amp; English</span></div>
+      </div>
+    </section>
+
+    <!-- ============ DISCIPLINES (horizontal pinned scroll) ============ -->
+    <section class="disciplines" id="work" data-shape="2">
+      <div class="disc-pin">
+        <div class="disc-head container">
+          <p class="eyebrow">What I do</p>
+          <h2 class="section-title">Three disciplines.<br /><span class="muted">One engineer.</span></h2>
+        </div>
+        <div class="disc-track" id="discTrack">
+          <article class="disc-card tilt">
+            <div class="disc-icon" aria-hidden="true">
+              <svg viewBox="0 0 48 48"><path d="M16 14L6 24l10 10M32 14l10 10-10 10M27 10l-6 28" /></svg>
+            </div>
+            <span class="disc-num">01</span>
+            <h3>Software Engineering</h3>
+            <p>Full-stack web apps with Spring Boot, Laravel and modern JavaScript. Mobile apps in Flutter and React Native. Clean, reusable components and solid backends on SQL, MySQL and PostgreSQL.</p>
+            <ul class="chips"><li>Spring Boot</li><li>Laravel</li><li>Flutter</li><li>JavaScript</li><li>Tailwind</li></ul>
+          </article>
+          <article class="disc-card tilt">
+            <div class="disc-icon" aria-hidden="true">
+              <svg viewBox="0 0 48 48"><circle cx="24" cy="10" r="4"/><circle cx="10" cy="36" r="4"/><circle cx="38" cy="36" r="4"/><path d="M22 13.5L12 32.5M26 13.5l10 19M14 36h20"/></svg>
+            </div>
+            <span class="disc-num">02</span>
+            <h3>Networking &amp; Routing</h3>
+            <p>VLANs, subnet design, virtual switching and public IP allocation. Core routing and switching on MikroTik and enterprise gear, topology design and simulation with Cisco Packet Tracer.</p>
+            <ul class="chips"><li>MikroTik</li><li>Cisco</li><li>VLANs</li><li>Subnetting</li><li>Monitoring</li></ul>
+          </article>
+          <article class="disc-card tilt">
+            <div class="disc-icon" aria-hidden="true">
+              <svg viewBox="0 0 48 48"><rect x="8" y="8" width="32" height="10" rx="2"/><rect x="8" y="22" width="32" height="10" rx="2"/><path d="M14 13h2M14 27h2M8 40h32M24 32v8"/></svg>
+            </div>
+            <span class="disc-num">03</span>
+            <h3>Cloud &amp; Infrastructure</h3>
+            <p>Servers, storage and OS environments. Cloud-hosted deployments with secure pipelines, plus large-scale AV systems, remote OTA access, IP endpoints and network-managed displays.</p>
+            <ul class="chips"><li>Cloud</li><li>Linux</li><li>Security</li><li>AV over IP</li><li>Scripting</li></ul>
+          </article>
+          <article class="disc-card disc-card--end">
+            <p class="eyebrow">Daily drivers</p>
+            <h3 class="grad">Dart · Java · Python · C++ · C# · SQL</h3>
+            <p>Plus Google Workspace and advanced MS Office for everything around the code.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ EXPERIENCE ============ -->
+    <section class="experience" id="experience" data-shape="3">
+      <div class="container">
+        <p class="eyebrow reveal">Experience</p>
+        <h2 class="section-title reveal">Where I've worked.</h2>
+        <div class="timeline">
+          <div class="timeline-line" aria-hidden="true"><span id="timelineFill"></span></div>
+
+          <article class="job">
+            <div class="job-dot" aria-hidden="true"></div>
+            <div class="job-meta"><span class="job-date">Apr 2026 — Present</span><span class="tag tag-live">Current</span></div>
+            <h3>Network &amp; Infrastructure Engineer</h3>
+            <p class="job-co">Arena Erbil</p>
+            <ul>
+              <li>Run core networking: VLANs, virtual switching and ISP-sourced public IP allocations.</li>
+              <li>Administer MikroTik routers and enterprise switches for high availability.</li>
+              <li>Troubleshoot, find root causes, tune performance and upgrade hardware across the site.</li>
+              <li>Centralised site-wide AV systems, remote OTA access, IP endpoints and network-managed displays.</li>
+              <li>Monitor and manage network traffic to keep the business running.</li>
+            </ul>
+          </article>
+
+          <article class="job">
+            <div class="job-dot" aria-hidden="true"></div>
+            <div class="job-meta"><span class="job-date">Feb 2026 — Apr 2026</span></div>
+            <h3>AV Engineer</h3>
+            <p class="job-co">Erbil Avenue — Alcove</p>
+            <ul>
+              <li>Designed, configured and supported site-wide private networks, subnets and local switching.</li>
+              <li>Maintained integrated audio-visual routing and hardware, with a focus on reliability.</li>
+            </ul>
+          </article>
+
+          <article class="job">
+            <div class="job-dot" aria-hidden="true"></div>
+            <div class="job-meta"><span class="job-date">Nov 2024 — Feb 2025</span></div>
+            <h3>Full Stack Developer &amp; Cloud Technician</h3>
+            <p class="job-co">Link Data</p>
+            <ul>
+              <li>Administered servers, storage systems and operating system environments.</li>
+              <li>Configured network topologies, routing and connectivity simulations in Cisco Packet Tracer.</li>
+              <li>Managed cloud-hosted servers with secure deployment pipelines and reliable access.</li>
+            </ul>
+          </article>
+
+          <article class="job">
+            <div class="job-dot" aria-hidden="true"></div>
+            <div class="job-meta"><span class="job-date">Sep 2024</span><span class="tag">Internship</span></div>
+            <h3>Fullstack Developer</h3>
+            <p class="job-co">Korek Telecom</p>
+            <ul>
+              <li>Built full-featured websites with Spring Boot.</li>
+              <li>Developed internal enterprise applications and integrated templates into telecom systems.</li>
+            </ul>
+          </article>
+
+          <article class="job">
+            <div class="job-dot" aria-hidden="true"></div>
+            <div class="job-meta"><span class="tag">Internship</span></div>
+            <h3>Web Developer</h3>
+            <p class="job-co">Al-Hayat Co.</p>
+            <ul>
+              <li>Migrated static templates to dynamic Laravel with optimised routing.</li>
+              <li>Created reusable Blade components and maintained backend workflows.</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ FEATURED PROJECT (pinned, scrubbed) ============ -->
+    <section class="featured" id="projects" data-shape="4">
+      <div class="featured-pin">
+        <div class="featured-copy">
+          <p class="eyebrow">Featured · Thesis</p>
+          <h2 class="featured-title">
+            <span class="ft-line">Four Raspberry Pis.</span>
+            <span class="ft-line grad">One supercomputer.</span>
+          </h2>
+          <div class="featured-steps">
+            <p class="fstep">A hybrid MPICH cluster — one Raspberry Pi 5 leading three Pi 3B+ nodes.</p>
+            <p class="fstep">Parallel jobs written in Python with <code>mpi4py</code>.</p>
+            <p class="fstep">Benchmarks for matrix multiplication, image processing and stress testing.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ PROJECT GRID ============ -->
+    <section class="projects" data-shape="4">
+      <div class="container">
+        <p class="eyebrow reveal">Selected projects</p>
+        <h2 class="section-title reveal">Things I've built.</h2>
+        <div class="project-grid">
+          <article class="project tilt project--wide">
+            <div class="project-glow" aria-hidden="true"></div>
+            <span class="project-kind">Production platform</span>
+            <h3>Kurdistan Gaming Festival</h3>
+            <p>Built the production platform for the first Kurdistan Gaming Festival, with secure admin panels, a central database and solid backend endpoints.</p>
+            <div class="project-foot"><ul class="chips"><li>Full stack</li><li>Admin</li><li>Database</li></ul><a href="https://gaming.krd" target="_blank" rel="noopener" class="project-link">gaming.krd &nearr;</a></div>
+          </article>
+
+          <article class="project tilt">
+            <div class="project-glow" aria-hidden="true"></div>
+            <span class="project-kind">AI · Deep learning</span>
+            <h3>Cat vs Dog Classifier</h3>
+            <p>A CNN image classifier with a full GUI for training and evaluation, plus live metric charts.</p>
+            <div class="project-foot"><ul class="chips"><li>Python</li><li>CNN</li></ul><a href="https://github.com/AceNagata/CatVsDogAI" target="_blank" rel="noopener" class="project-link">GitHub &nearr;</a></div>
+          </article>
+
+          <article class="project tilt">
+            <div class="project-glow" aria-hidden="true"></div>
+            <span class="project-kind">Game · Unity</span>
+            <h3>Dinar Suika</h3>
+            <p>A Suika-style physics puzzle game where you merge Iraqi Dinar coins instead of fruit.</p>
+            <div class="project-foot"><ul class="chips"><li>Unity</li><li>C#</li><li>Physics</li></ul><a href="https://github.com/AceNagata/Dinar-Suika" target="_blank" rel="noopener" class="project-link">GitHub &nearr;</a></div>
+          </article>
+
+          <article class="project tilt">
+            <div class="project-glow" aria-hidden="true"></div>
+            <span class="project-kind">Web · Multilingual</span>
+            <h3>SoulFood</h3>
+            <p>A recipe-sharing web app in English, Kurdish and Arabic, with a bright, responsive UI.</p>
+            <div class="project-foot"><ul class="chips"><li>Web</li><li>i18n</li><li>RTL</li></ul></div>
+          </article>
+
+          <article class="project tilt">
+            <div class="project-glow" aria-hidden="true"></div>
+            <span class="project-kind">Mobile · Flutter</span>
+            <h3>Electricity Saver</h3>
+            <p>Tracks electricity use in real time. Users log appliance usage, get energy-saving tips and set daily reminders.</p>
+            <div class="project-foot"><ul class="chips"><li>Flutter</li><li>Dart</li></ul></div>
+          </article>
+
+          <article class="project tilt">
+            <div class="project-glow" aria-hidden="true"></div>
+            <span class="project-kind">EdTech</span>
+            <h3>EasyQ</h3>
+            <p>A multiple-choice quiz platform where teachers build quizzes quickly and students get instant feedback.</p>
+            <div class="project-foot"><ul class="chips"><li>Web</li><li>Education</li></ul></div>
+          </article>
+
+          <article class="project tilt">
+            <div class="project-glow" aria-hidden="true"></div>
+            <span class="project-kind">Business website</span>
+            <h3>Govand Baban Firm</h3>
+            <p>A modern business website for the Govand Baban firm, covering its services, background and contact details in a clean, accessible layout.</p>
+            <div class="project-foot"><ul class="chips"><li>Web</li><li>UI</li></ul></div>
+          </article>
+
+          <article class="project tilt">
+            <div class="project-glow" aria-hidden="true"></div>
+            <span class="project-kind">Web · Laravel</span>
+            <h3>Venture Dental</h3>
+            <p>A website for Ventures Dental Supplies, built as a team and moved to Laravel with Blade components.</p>
+            <div class="project-foot"><ul class="chips"><li>Laravel</li><li>Blade</li></ul><a href="https://github.com/AceNagata/Venture-Dental-Laravel" target="_blank" rel="noopener" class="project-link">GitHub &nearr;</a></div>
+          </article>
+        </div>
+
+        <div class="more-repos reveal">
+          <span class="muted">More on GitHub:</span>
+          <a href="https://github.com/AceNagata/Movie-App" target="_blank" rel="noopener">Movie App (React Native)</a>
+          <a href="https://github.com/AceNagata/Match-Score-Manager" target="_blank" rel="noopener">Match Score Manager</a>
+          <a href="https://github.com/AceNagata/Runway" target="_blank" rel="noopener">Runway</a>
+          <a href="https://github.com/AceNagata/Flappy-Bird-Unity-2D" target="_blank" rel="noopener">Flappy Bird (Unity 2D)</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ SKILLS (scroll-driven marquees) ============ -->
+    <section class="skills" id="skills" data-shape="5">
+      <div class="container">
+        <p class="eyebrow reveal">Toolbox</p>
+        <h2 class="section-title reveal">Fluent in the full stack.</h2>
+      </div>
+      <div class="marquee" data-dir="1">
+        <div class="marquee-row">
+          <span>Flutter</span><span>Dart</span><span>JavaScript</span><span>HTML</span><span>CSS</span><span>Tailwind</span><span>Java</span><span>Spring Boot</span><span>Laravel</span><span>Python</span><span>C++</span><span>C#</span>
+        </div>
+      </div>
+      <div class="marquee marquee--outline" data-dir="-1">
+        <div class="marquee-row">
+          <span>MikroTik</span><span>Cisco</span><span>VLANs</span><span>Routing</span><span>Switching</span><span>Cloud</span><span>Linux</span><span>Monitoring</span><span>Security</span><span>AV over IP</span>
+        </div>
+      </div>
+      <div class="marquee" data-dir="1">
+        <div class="marquee-row">
+          <span>SQL</span><span>MySQL</span><span>PostgreSQL</span><span>GitHub</span><span>Unity</span><span>MPI</span><span>Google Workspace</span><span>MS Office</span><span>React Native</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ EDUCATION & ACHIEVEMENTS ============ -->
+    <section class="edu" data-shape="5">
+      <div class="container edu-grid">
+        <div class="edu-col">
+          <p class="eyebrow reveal">Education</p>
+          <h2 class="section-title reveal">Learning, always.</h2>
+          <ol class="edu-list">
+            <li class="reveal"><span class="edu-year">2021 — 2025</span><strong>University of Kurdistan Hewler (UKH)</strong><span class="muted">Software Engineering</span></li>
+            <li class="reveal"><span class="edu-year">2017 — 2021</span><strong>Hawler Typical Secondary School</strong><span class="muted">HTSS</span></li>
+            <li class="reveal"><span class="edu-year">2010 — 2017</span><strong>Cambridge International School</strong><span class="muted">CISK</span></li>
+          </ol>
+        </div>
+        <div class="edu-col">
+          <div class="award tilt reveal">
+            <span class="award-medal" aria-hidden="true">1st</span>
+            <div><h3>Annual Binomial Acumen</h3><p class="muted">First place</p></div>
+          </div>
+          <div class="award tilt reveal">
+            <span class="award-medal" aria-hidden="true">1st</span>
+            <div><h3>Probability &amp; Statistics</h3><p class="muted">First place</p></div>
+          </div>
+          <div class="award tilt reveal">
+            <span class="award-medal award-medal--alt" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><rect x="6" y="7" width="12" height="10" rx="2"/><path d="M9 11h.01M15 11h.01M12 4v3M4 12h2M18 12h2M9 14h6"/></svg>
+            </span>
+            <div><h3>Robotics Certificate</h3><p class="muted">With Dr. Ibrahim Hamarash at UKH</p></div>
+          </div>
+          <div class="courses reveal">
+            <p class="eyebrow">Core coursework</p>
+            <ul class="chips">
+              <li>Computer Networks</li><li>Computer Architecture</li><li>Operating Systems</li><li>Computer Systems</li><li>Digital Logic &amp; Electronics</li><li>Database Systems</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ CONTACT ============ -->
+    <section class="contact" id="contact" data-shape="6">
+      <div class="container contact-inner">
+        <p class="eyebrow reveal">Contact</p>
+        <h2 class="contact-title">
+          <span class="ct-line">Let's build</span>
+          <span class="ct-line grad">something great.</span>
+        </h2>
+        <a class="contact-mail reveal" href="mailto:yadkoyiii@gmail.com">yadkoyiii@gmail.com</a>
+        <div class="contact-links reveal">
+          <a class="btn btn-ghost" href="https://github.com/AceNagata" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" aria-hidden="true" class="ico"><path d="M12 .5C5.7.5.5 5.7.5 12c0 5.1 3.3 9.4 7.9 10.9.6.1.8-.3.8-.6v-2c-3.2.7-3.9-1.5-3.9-1.5-.5-1.3-1.3-1.7-1.3-1.7-1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1 1.8 2.8 1.3 3.5 1 .1-.8.4-1.3.7-1.6-2.6-.3-5.3-1.3-5.3-5.7 0-1.3.5-2.3 1.2-3.1-.1-.3-.5-1.5.1-3.1 0 0 1-.3 3.3 1.2a11.5 11.5 0 0 1 6 0C17.3 4.7 18.3 5 18.3 5c.6 1.6.2 2.8.1 3.1.8.8 1.2 1.8 1.2 3.1 0 4.4-2.7 5.4-5.3 5.7.4.4.8 1.1.8 2.2v3.3c0 .3.2.7.8.6A11.5 11.5 0 0 0 23.5 12C23.5 5.7 18.3.5 12 .5z"/></svg>
+            GitHub
+          </a>
+          <a class="btn btn-ghost" href="https://www.linkedin.com/in/yadkoyi" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" aria-hidden="true" class="ico"><path d="M20.4 20.5h-3.6v-5.6c0-1.3 0-3-1.8-3s-2.1 1.4-2.1 2.9v5.7H9.3V9h3.4v1.6h.1c.5-.9 1.6-1.8 3.4-1.8 3.6 0 4.3 2.4 4.3 5.5v6.2zM5.3 7.4a2.1 2.1 0 1 1 0-4.2 2.1 2.1 0 0 1 0 4.2zM7.1 20.5H3.5V9h3.6v11.5zM22.2 0H1.8C.8 0 0 .8 0 1.7v20.6c0 .9.8 1.7 1.8 1.7h20.4c1 0 1.8-.8 1.8-1.7V1.7C24 .8 23.2 0 22.2 0z"/></svg>
+            LinkedIn
+          </a>
+        </div>
+        <p class="contact-loc reveal muted">Erbil, Kurdistan Region, Iraq</p>
+      </div>
+      <footer class="footer container">
+        <span>&copy; <span id="year"></span> Yad Soran Tawfeeq</span>
+        <a href="#top">Back to top &uarr;</a>
+      </footer>
+    </section>
+  </main>
+
+  <script src="assets/vendor/gsap.min.js"></script>
+  <script src="assets/vendor/ScrollTrigger.min.js"></script>
+  <script src="assets/vendor/lenis.min.js"></script>
+  <script type="module" src="assets/js/main.js"></script>
+</body>
+</html>
